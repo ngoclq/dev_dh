@@ -32,6 +32,7 @@ require CORE_PATH . 'config' . DS . 'bootstrap.php';
 use Cake\Cache\Cache;
 use Cake\Console\ConsoleErrorHandler;
 use Cake\Core\App;
+use Cake\Routing\DispatcherFactory;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Core\Plugin;
@@ -39,6 +40,7 @@ use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorHandler;
 use Cake\Http\ServerRequest;
+use Cake\I18n\I18n;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Utility\Inflector;
@@ -68,6 +70,7 @@ use Cake\Utility\Security;
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
+    Configure::load("const");
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }
@@ -206,7 +209,17 @@ Type::build('timestamp')
  * Plugin::load('Migrations'); //Loads a single plugin named Migrations
  *
  */
+    Plugin::load([
+        'AdminManager' => ['bootstrap' => false, 'routes' => true, 'autoload' => true],
+        //'UserManager'  => ['bootstrap' => true, 'routes' => true],
+    ]);
+    
+    
+    Plugin::load([
+        'Froala' => ['bootstrap' => false, 'routes' => true, 'autoload' => true],
+    ]);
 
+	Configure::write('Froala.editorOptions', array('height' => '300px'));
 /*
  * Only try to load DebugKit in development mode
  * Debug Kit should not be installed on a production system

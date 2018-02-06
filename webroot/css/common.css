@@ -1,0 +1,17 @@
+.items_hiden {
+	display: none !important;
+	visibility: hidden!important;
+	opacity: 0!important;
+}
+.items_disable {
+	opacity: 0.5!important;
+	pointer-events: none!important;
+	background: #dddddd!important;
+}
+.required > label {
+    font-weight: bold;
+}
+.required > label:after {
+    content: ' *';
+    color: #C3232D;
+}

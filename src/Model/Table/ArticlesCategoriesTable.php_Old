@@ -1,0 +1,81 @@
+<?php
+namespace App\Model\Table;
+
+use Cake\Datasource\EntityInterface;
+use Cake\Event\Event;
+use Cake\ORM\Table;
+use ArrayObject;
+
+class ArticlesCategoriesTable extends Table
+{
+    public function initialize(array $config)
+    {
+        //TableRegistry::config('ArticleCategory', ['table' => 'article_categories']);
+        //$this->addBehavior('Timestamp');
+    }
+    
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+        ->notEmpty('title')
+        ->requirePresence('title')
+        ->notEmpty('body')
+        ->requirePresence('body');
+        
+        return $validator;
+    }
+
+    /* public function validationDefault(Validator $validator)
+    {
+        $validator
+        ->notEmpty('name')
+        ->allowEmpty('description');
+        
+        return $validator;
+    } */
+    
+    function beforeSave(Event $event, EntityInterface $entity, ArrayObject $options)
+    {
+        if (empty($entity->order_number)) {
+            $entity->order_number = $this->getMaxOrderNumber();
+        }
+        
+        if (is_null($entity->display_flag) || $entity->display_flag === '') {
+            $entity->display_flag = 1;
+        }
+        
+        if (is_null($entity->delete_flag) || $entity->delete_flag === '') {
+            $entity->delete_flag = 0;
+        }
+        
+        if (empty($entity->created)) {
+            $entity->created = date('Y-m-d H:i:s');
+        }
+        if (empty($entity->updated)) {
+            $entity->updated = date('Y-m-d H:i:s');
+        }
+
+        return true;
+    }
+
+    /**
+     * get maximum value of `order_number` column  then plus 1
+     *
+     * @return int 
+     */
+    public function getMaxOrderNumber()
+    {
+        $orderNumber = $this->find('all', [
+                'conditions' => ['delete_flag' => '0'],
+                'fields' => ['order_number' => 'MAX(ArticlesCategories.order_number) + 1 ']
+            ]);
+
+        if ($orderNumber->first()->order_number) {
+            $maxOrderNumber = $orderNumber->first()->order_number;
+        } else {
+            $maxOrderNumber = 1;
+        }
+
+        return $maxOrderNumber;
+    }
+}

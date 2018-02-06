@@ -1,4 +1,23 @@
 <?php
+use Cake\Core\Configure;
+
+define('DEFAULT_LANGUAGE', 'vi');
+
+Configure::write('Config.languageAccept', [
+    'vi' => 'English version',
+    'jp' => 'Japan version'
+]);
+
+Configure::write('Config.functionException', [
+    'download',
+    'upload'
+]);
+
+Configure::write('Config.Facebook', [
+    'app_id' => '',
+    'app_secret' => ''
+]);
+
 return [
     /**
      * Debug Level:
@@ -39,7 +58,8 @@ return [
     'App' => [
         'namespace' => 'App',
         'encoding' => env('APP_ENCODING', 'UTF-8'),
-        'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
+        // 'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
+        'defaultLocale' => env('APP_DEFAULT_LOCALE', 'vi'),
         'base' => false,
         'dir' => 'src',
         'webroot' => 'webroot',
@@ -64,7 +84,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '2caa5bd34f936bdf8db5954c564be8708de26e4a9cdf766aa9d9bcdf064a94c1'),
+        'salt' => env('SECURITY_SALT', '2caa5bd34f936bdf8db5954c563333333de26e4a9cdf766aa9d9bcdf064a94c1')
     ],
 
     /**
@@ -176,7 +196,7 @@ return [
      * appropriate file to src/Mailer/Transport. Transports should be named
      * 'YourTransport.php', where 'Your' is the name of the transport.
      */
-    'EmailTransport' => [
+    /* 'EmailTransport' => [
         'default' => [
             'className' => 'Mail',
             // The following keys are used in SMTP transports
@@ -187,8 +207,22 @@ return [
             'password' => null,
             'client' => null,
             'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
-        ],
+            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null)
+        ]
+    ], */
+    'EmailTransport' => [
+        'default' => [
+            'className' => 'Smtp',
+            // The following keys are used in SMTP transports
+            'host' => 'ssl://smtp.gmail.com',
+            'port' => 465,
+            'timeout' => 30,
+            'username' => '',
+            'password' => '',
+            'client' => null,
+            'tls' => null,
+            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null)
+        ]
     ],
 
     /**
@@ -231,7 +265,7 @@ return [
             //'port' => 'non_standard_port_number',
             'username' => 'my_app',
             'password' => 'secret',
-            'database' => 'my_app',
+            'database' => 'dev_jp',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
@@ -271,7 +305,7 @@ return [
             //'port' => 'non_standard_port_number',
             'username' => 'my_app',
             'password' => 'secret',
-            'database' => 'test_myapp',
+            'database' => 'dev_jp',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
@@ -352,6 +386,16 @@ return [
      * To use database sessions, load the SQL file located at config/schema/sessions.sql
      */
     'Session' => [
-        'defaults' => 'php',
+        'defaults'  =>  'php',
+        'cookie'    =>  'dev_project',
+        'timeout'   =>  24,     //minutes
+        'ini'       =>  [
+            'session.gc_divisor'        =>  1000,
+            'session.cookie_secure'     =>  false,
+            'session.cookie_path'       =>  '/',
+            'session.cookie_domain'     =>  'dev.project.com',
+            'session.cookie_httponly'   =>  true,
+            'session.cookie_lifetime'   =>  1440,   //seconds
+        ],
     ],
 ];

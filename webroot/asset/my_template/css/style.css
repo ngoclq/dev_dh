@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+.e_bbs_section_box{
+    padding:20px;
+    background:#fffffc;
+    border:2px solid #f4f4f4;
+    border-radius: 5px;
+    behavior: url(/css/common/PIE.htc);
+}
+.e_bbs_section_box h1{ 
+    margin-top:5px;
+    color:#573802;
+    font-size:1.5em;
+    word-break:break-all;
+}
+.e_bbs_section_box h1 img{
+    margin-right:5px;
+} 
+.e_bbs_section_box h2{
+    color:#573802;
+    font-size:1.333em;
+    word-break:break-all;
+}
+article{
+    padding:20px 0;
+    border-bottom:1px solid #ccc;
+}
+.e_article_data{
+    float:left;
+    width:435px;
+}
+.e_article_data li{
+    float:left;
+    margin-right:10px;
+}
+.e_article_data li span{
+    font-weight:bold;
+}
+
+
+.e_article_inner_respons{
+    padding:10px 20px;
+    background:#f5f8eb;
+    border-radius: 5px;
+    font-size:1.1em;
+    line-height:1.6em;
+    min-height:70px;
+    height:auto !important;
+    height:70px;
+}
+
+.e_article_inner_respons p{
+    font-size: 1.1em;
+	word-break:break-all;
+	line-height: 1.6;
+	letter-spacing: 0.5px;
+}
+
+a.e_btn_comment2{
+    float:right;
+    display:block;
+    width:100px;
+    height:21px;
+    background:url(/img/bbs/btn_bbs_comment2_hover.gif?20140210) no-repeat 0 0;
+}
+a.e_btn_comment2:hover img{
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+/*
+    float:right;
+    display:block;
+    width:100px;
+    height:21px;
+    background:url(/img/bbs/btn_bbs_comment2_hover.gif?20140210) no-repeat 0 0;
+*/
+}
+.e_btn_comment2-1{
+    float:right;
+    display:block;
+    /*width:100px;*/
+    height:21px;
+    min-width: 100px;
+    max-width: 245px;
+  	margin: 0 auto;
+}
+.e_like_box{
+    float:left;
+    width:110px;
+}
+  /* わかる */
+.e_btn_like{
+    float:left;
+    display:block;
+    width:57px;
+    height:20px;
+    margin-right:2px;
+    background:url(/img/bbs/btn_like_hover.gif?20140210) no-repeat 0 0;
+}
+.e_btn_like:hover img{
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+}  
+.e_btn_like_on{
+    float:left;
+    display:block;
+    width:57px;
+    height:20px;
+    margin-right:2px;
+}
+
+
+
+
+

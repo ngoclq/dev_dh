@@ -1,0 +1,95 @@
+msgid "TO_TOP"
+msgstr "ページの先頭に戻る"
+
+msgid "REGISTER"
+msgstr "会員登録"
+
+msgid "LOGIN"
+msgstr "ログイン"
+
+msgid "VIEW_MORE"
+msgstr "続きを見る"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "PASSWORD"
+msgstr "Mật khẩu"
+
+msgid "FIRST_NAME"
+msgstr "Họ"
+
+msgid "LAST_NAME"
+msgstr "Tên"
+
+msgid "GENDER"
+msgstr "Giới tính"
+
+msgid "MALE"
+msgstr "Nam"
+
+msgid "FEMALE"
+msgstr "Nữ"
+
+msgid "DOB"
+msgstr "Ngày sinh"
+
+msgid "MOBILE"
+msgstr "Số di động"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ARTICLE_CATEGORY"
+msgstr "Chủ đề"
+
+msgid "NEWS_CATEGORY"
+msgstr "Chủ đề"
+
+msgid "TITLE"
+msgstr "Tiêu đề"
+
+msgid "BODY"
+msgstr "Nội dung"
+
+msgid "KEY_WORD"
+msgstr "キーワード"
+
+msgid "RELATED_NEWS"
+msgstr "Bài viết cùng chủ đề"
+
+msgid "TOP_NEWS"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "TOP_NEWS"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "ANNOTATIONS_FOR_TOP_NEWS"
+msgstr "※Trong 7 ngày trước"
+
+msgid "RELATED_ARTICLES"
+msgstr "Bài viết cùng chủ đề"
+
+msgid "TOP_ARTICLES"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "TOP_ARTICLES"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "ANNOTATIONS_FOR_TOP_ARTICLES"
+msgstr "※Trong 7 ngày trước"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Send"
+msgstr "送信"
+
+msgid "Reply"
+msgstr "返信"
+
+msgid "Forward"
+msgstr "転送"
+
+msgid "Delete"
+msgstr "削除"

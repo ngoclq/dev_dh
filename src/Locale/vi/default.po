@@ -1,0 +1,423 @@
+/*==========================WEBSITE INFOMATION AREA=================================*/
+
+msgid "LANGUAGE"
+msgstr "vi"
+
+msgid "LOCALE"
+msgstr "vi_VN"
+
+msgid "WEBSITE_AUTHOR"
+msgstr "DDH VietNam"
+
+msgid "WEBSITE_TITLE"
+msgstr "Gioi thieu site"
+
+msgid "WEBSITE_DESCRIPTION"
+msgstr "Mo ta noi dung cua site"
+
+msgid "COMPANY_NAME"
+msgstr "CÔNG TY CỔ PHẦN PHÁT TRIỂN NHÂN LỰC VÀ HỢP TÁC QUỐC TẾ DHH VIỆT NAM"
+
+msgid "COMPANY_ADDRESS"
+msgstr "Địa chỉ: Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
+
+msgid "COMPANY_MOBILE"
+msgstr "Điện thoại :  0987 178 988"
+
+msgid "COMPANY_EMAIL"
+msgstr "Email: dhhvnjp@gmail.com"
+
+msgid "COMPANY_HOTLINE"
+msgstr "Hotline: 0987 178 988"
+
+
+
+/*==========================DATETIME AREA=================================*/
+
+msgid "FULL_TIMES"
+msgstr "dd-MM-yyyy HH:mm:ss"
+
+msgid "TIMES_MINUTES"
+msgstr "dd-MM-yyyy HH:mm"
+
+msgid "TIMES_DAYS"
+msgstr "dd-MM-yyyy"
+
+msgid "LABEL_YEAR"
+msgstr "Năm"
+
+msgid "LABEL_MONTH"
+msgstr "Tháng"
+
+msgid "LABEL_DAY"
+msgstr "Ngày"
+
+msgid "LABEL_HOUR"
+msgstr "Giờ"
+
+msgid "LABEL_MINUTE"
+msgstr "Phút"
+
+msgid "LABEL_SECOND"
+msgstr "Giây"
+
+
+/*==========================LABEL COMMON AREA=================================*/
+
+msgid "TO_TOP"
+msgstr "Lên đầu trang"
+
+msgid "ANNOTATIONS_FOR_TOP_FLAG"
+msgstr "Ưu tiên hiển thị bài viết này"
+
+msgid "CREATE"
+msgstr "Tạo mới"
+
+msgid "VIETNAMESE"
+msgstr "Tiếng Việt"
+
+msgid "JAPANESE"
+msgstr "Tiếng Nhật"
+
+msgid "VIEW_MORE"
+msgstr "Xem thêm"
+
+msgid "MENU_OTHER"
+msgstr "Các chủ đề khác"
+
+msgid "CLICK_HERE"
+msgstr "vào đây"
+
+msgid "ACTIVE_DATE"
+msgstr "Ngày hiển thị bài viết"
+
+msgid "ANNOTATIONS_ACTIVE_DATE"
+msgstr "※Mặc định bài viết sẽ hiển thị ngay sau khi đăng ký"
+
+msgid "HOME_PAGE"
+msgstr "Trang chủ"
+
+msgid "TOPIC_PAGE"
+msgstr "Chủ đề/Thảo luận"
+
+msgid "FEEDBACK_PAGE"
+msgstr "Góp ý"
+
+msgid "ABOUT_PAGE"
+msgstr "Giới thiệu"
+
+msgid "HELP_PAGE"
+msgstr "Trợ giúp"
+
+msgid "QA_PAGE"
+msgstr "Liên lạc"
+
+msgid "LABEL_LOGIN"
+msgstr "Đăng Nhập"
+
+msgid "LABEL_REGISTER"
+msgstr "Đăng ký"
+
+msgid "ANNOTATIONS_LOGIN"
+msgstr "Nhập email và mật khẩu của bạn để <strong>đăng nhập</strong>"
+
+msgid "ANNOTATIONS_REGISTER"
+msgstr "Nhập thông tin cá nhân của bạn để tạo <strong>tài khoản</strong>"
+
+msgid "LABEL_LOGIN_OTHER"
+msgstr "Đăng nhập với tài khoản "
+
+msgid "LABEL_REGISTER_OTHER"
+msgstr "Đăng ký với tài khoản "
+
+msgid "AUTO_LOGIN"
+msgstr "Tự động login lần sau"
+
+msgid "REMINDER"
+msgstr "Quên mật khẩu?"
+
+msgid "LABEL_SHOW"
+msgstr "Hiển thị"
+
+msgid "LABEL_HIDE"
+msgstr "Ẩn"
+
+
+
+
+/*==========================MESSAGE COMMON AREA=================================*/
+
+msgid "MSG_SAVE_SUCCESS"
+msgstr "Hoàn thành lưu {0}!"
+
+msgid "MSG_SAVE_FAIL"
+msgstr "Lưu {0} thất bại!"
+
+msgid "MSG_IS_NOT_EXIST"
+msgstr "Không tồn tại {0} đã chọn"
+
+msgid "MSG_EXCEPTION"
+msgstr "Có lỗi xảy ra trong quá trình xử lý dữ liệu. Vui Lòng thử lại"
+
+msgid "MSG_IS_NOT_EXIST"
+msgstr "Không tồn tại bài viết"
+
+msgid "MSG_BACK_TO_HOME"
+msgstr "Nhấp {0} để quay lại trang chủ"
+
+msgid "MSG_NOT_EMPTY"
+msgstr "Vui lòng nhập {0}!"
+
+msgid "MSG_EMAIL_INVALID"
+msgstr "Email không hợp lệ!"
+
+msgid "MSG_EMAIL_EXIST"
+msgstr "Email đã tồn tại!"
+
+msgid "MSG_PASSWORD_NOT_MATCH"
+msgstr "Xác nhận mật khẩu không đúng!"
+
+msgid "MSG_MIN_LENGTH"
+msgstr "{0} cần nhập ít nhất {1} ký tự!"
+
+msgid "MSG_MAX_LENGTH"
+msgstr "{0} không nhập nhiều hơn {1} ký tự!"
+
+msgid "MSG_LOGIN_ERROR"
+msgstr "{0} hoặc {1} không chính xác"
+
+msgid "MSG_REGISTER_ERROR"
+msgstr "Thông tin đăng ký không chính xác! Vui lòng nhập lại"
+
+
+/*==========================BUTTON COMMON AREA=================================*/
+
+msgid "BTN_REGISTER"
+msgstr "Đăng ký"
+
+msgid "BTN_UPDATE"
+msgstr "Cập nhật"
+
+msgid "BTN_DELETE"
+msgstr "Xóa"
+
+msgid "BTN_SAVE"
+msgstr "Lưu"
+
+msgid "BTN_CANCEL"
+msgstr "Hủy"
+
+msgid "BTN_NEXT"
+msgstr "Sau"
+
+msgid "BTN_PREV"
+msgstr "Trước"
+
+msgid "BTN_SEND"
+msgstr "Gửi"
+
+msgid "BTN_REPLY"
+msgstr "Trả lời"
+
+msgid "BTN_FORWARD"
+msgstr "Chuyển tiếp"
+
+msgid "BTN_DRAFT"
+msgstr "Lưu nháp"
+
+msgid "BTN_SHOW"
+msgstr "Hiển thị"
+
+msgid "BTN_HIDDEN"
+msgstr "Ẩn"
+
+msgid "BTN_LOGIN"
+msgstr "Đăng nhập"
+
+msgid "BTN_REGISTER"
+msgstr "Đăng ký"
+
+msgid "BTN_DETAIL"
+msgstr "Chi tiết"
+
+
+/*==========================SUMMARY ARTICLES/NEWS AREA=================================*/
+
+msgid "ID"
+msgstr "Mã"
+
+msgid "NO_NUMBER"
+msgstr "STT"
+
+msgid "CATEGORY"
+msgstr "Chuyên mục"
+
+msgid "TITLE"
+msgstr "Tiêu đề"
+
+msgid "BODY"
+msgstr "Nội dung"
+
+msgid "DESCRIPTION"
+msgstr "Mô tả"
+
+msgid "BODY_CONTENT"
+msgstr "Nội dung"
+
+msgid "KEY_WORD"
+msgstr "Từ khóa"
+
+msgid "CREATED"
+msgstr "Ngày tạo"
+
+msgid "UPDATED"
+msgstr "Ngày cập nhật"
+
+
+/*==========================USES AREA=================================*/
+
+msgid "USERS"
+msgstr "Hội viên"
+
+msgid "EMAIL"
+msgstr "Email"
+
+msgid "PASSWORD"
+msgstr "Mật khẩu"
+
+msgid "PASSWORD_RAW"
+msgstr "Mật khẩu (Xác nhận)"
+
+msgid "USERNAME"
+msgstr "Tên truy cập"
+
+msgid "NAME"
+msgstr "Tên"
+
+msgid "FULL_NAME"
+msgstr "Họ & Tên"
+
+msgid "FIRST_NAME"
+msgstr "Họ"
+
+msgid "LAST_NAME"
+msgstr "Tên"
+
+msgid "GENDER"
+msgstr "Giới tính"
+
+msgid "MALE"
+msgstr "Nam"
+
+msgid "FEMALE"
+msgstr "Nữ"
+
+msgid "DOB"
+msgstr "Ngày sinh"
+
+msgid "MOBILE"
+msgstr "Số di động"
+
+
+/*==========================NEWS AREA=================================*/
+
+msgid "NEWS"
+msgstr "Bài viết"
+
+msgid "NEWS_RELATED"
+msgstr "Bài viết cùng chủ đề"
+
+msgid "NEWS_LATEST"
+msgstr "Bài viết mới nhất"
+
+msgid "NEWS_SUGGEST"
+msgstr "Bài viết nổi bật"
+
+msgid "NEWS_TOP"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "NEWS_ANNOTATIONS_FOR_TOP"
+msgstr "※Trong 7 ngày trước"
+
+msgid "NEWSCATEGORIES"
+msgstr "Chủ đề"
+
+msgid "NEWSHITORIES"
+msgstr "Lịch sử"
+
+
+/*==========================ARTICLE AREA=================================*/
+
+msgid "ARTICLES"
+msgstr "Chủ đề/Bình luận"
+
+msgid "RELATED_ARTICLES"
+msgstr "Bài viết cùng chủ đề"
+
+msgid "TOP_ARTICLES"
+msgstr "Các bài viết được xem nhiều nhất"
+
+msgid "ANNOTATIONS_FOR_TOP_ARTICLES"
+msgstr "※Trong 7 ngày trước"
+
+msgid "ARTICLESCATEGORIES"
+msgstr "Chủ đề"
+
+msgid "ARTICLESHITORIES"
+msgstr "Lịch sử"
+
+
+/*==========================CONTACTS AREA=================================*/
+
+msgid "LABEL_TITLE"
+msgstr "Chủ đề"
+
+msgid "LABEL_PHONE_NUMBER"
+msgstr "Số điện thoại"
+
+msgid "LABEL_CONTENTS"
+msgstr "Nội dung phản hồi"
+
+msgid "MSG_CONTACT_SEND_SUCCESS"
+msgstr "Liên lạc của bạn đã được gửi tới Quản trị viên.<br/> Quản trị viên sẽ trả lời bạn thông qua mail đã đăng ký!"
+
+msgid "MSG_CONTACT_SEND_ERROR"
+msgstr "Liên lạc của bạn chưa được gửi đi. Vui lòng thử lại!"
+
+msgid "MSG_CONTACT_NOT_FOUND"
+msgstr "Rất tiếc, Chúng tôi không tìm thấy nội dung liên lạc của bạn!"
+
+msgid "MSG_CONTACT_SEND_INVALID"
+msgstr "Thông tin bạn nhập không đúng. Vui lòng nhập lại!"
+
+
+/*==========================FORMAT AREA=================================*/
+
+msgid "FORMAT_FIRST_NAME"
+msgstr "{0} {1}"
+
+
+/*==========================ADMIN AREA=================================*/
+
+msgid "LABEL_CONTACT"
+msgstr "Liên hệ"
+
+msgid "LABEL_SHOW_ALL_CONTACT"
+msgstr "Hiển thị tất cả tin nhắn"
+
+msgid "NEWS_ADD"
+msgstr "Đăng bài"
+
+msgid "NEWS_LIST"
+msgstr "Danh sách bài viết"
+
+msgid "NEWS_CATEGORY"
+msgstr "Danh mục bài viết"
+
+msgid "NEW_CONTACT_NOTICLES"
+msgstr "{0} gửi cho bạn 1 tin nhắn"
+
+
+
+
+

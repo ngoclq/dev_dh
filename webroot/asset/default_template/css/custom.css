@@ -1,0 +1,510 @@
+.float-left {float: left}
+.float-right {float: right}
+
+.top-header {
+	height: 40px;
+	background-color: #cf1a20;
+	color: #fff;
+	padding-top: 8px
+}
+
+.navbar .top-header{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.navbar-brand img{
+	width: auto;
+	height: 100%;
+	margin-top: 2px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.title-session {
+	border-bottom: 1px solid #f1f1f1;
+	text-align: center;
+	padding-bottom: 20px;	
+	color: #2f2f2f;
+	font-size: 2.5vmax;
+	font-weight: 400;
+}
+
+.session01{
+	/*background: url("../img/bgSession01.jpg") center center;*/
+	/*padding-bottom: 30px;*/
+}
+
+.session03 .container-fluid {
+	background-color: #e4e4e4 
+}
+
+.container-fluid {
+	background-color: #fff;
+}
+
+.services-ls.container-fluid.bg-3 {
+	background-color: #fff;
+	padding-bottom: 20px;
+}
+
+.session01 .carousel-control.right,
+.session01 .carousel-control.left{
+	background-image: none;
+}
+
+.session01 p{
+	margin-top: 10px;
+	font-size: 3vmax;
+	font-weight: 300;
+	color: #2f2f2f;
+}
+
+ footer .session01 span{
+	font-size: 20px;
+	font-weight: 800;
+	margin-top: 10px;
+	color: #2f2f2f;
+}
+
+#myCarousel02 .fa {
+	color: #2f2f2f;
+}
+
+.session01 .img-responsive, .session02 .img-responsive {
+	margin-top: 10px;
+	/*margin-bottom: 10px;*/
+}
+
+.session02 {
+	/*background: url(../img/bgSess02.jpg) repeat-x #000*/
+}
+
+.session03 .title-session {
+	border-bottom: none;
+	text-align: center;
+	padding-bottom: 20px;
+	font-weight: 400;
+	color: #2f2f2f;
+	font-size: 2.5vmax;
+	text-transform: uppercase;
+}
+
+.session03 {
+	background-color: #e4e4e4;
+	padding: 10px 0 35px 0;
+}
+
+.session03 p{
+	margin-top: 10px;
+	font-size: 2vmax;
+	font-weight: 400;
+	color: #2f2f2f;
+	text-decoration: underline;
+}
+.session03 span{
+	font-size: 1.5vmax;
+	font-weight: 400;
+	margin-top: 10px;
+	color: #2f2f2f;
+}
+
+.session04 {
+	background: url("../img/bgNhanxet.jpg") center center no-repeat #bcd6d3;
+	background-size: cover;
+}
+
+.aboutUs.session01 .bg-3.container-fluid{
+	padding-bottom: 20px;
+}
+
+.session04 .title-session {
+	border-bottom: none;
+	text-align: left;
+	padding-bottom: 20px;
+	font-weight: 300;
+	color: #000;
+	font-size: 2.5vmax;
+}
+
+.session04 p{
+	margin-top: 10px;
+	font-size: 1.5vmax;
+	font-weight: 300;
+	color: #000;
+}
+.session04 span{
+	font-size: 1.2vmax;
+	font-weight: 300;
+	margin-top: 10px;
+	color: #000;
+}
+
+#well2 {
+    height: 85%;
+    margin-bottom: 0;
+    overflow: auto;
+}
+
+.full-height {
+    height: 300px;
+}
+
+.footer-01 {
+	background: #cf1a20;
+	text-align: center;
+	color: #fff
+}
+
+.footer {
+	background-color: #4e4e4e;
+	color: #fff;
+}
+
+.session02 img{
+	margin: 0 auto
+}
+
+.top-header a{
+	color: #fff;
+}
+
+
+.top-header a:hover{
+	color: #fff;
+}
+
+.aboutUs.session01 .title-session {
+    border-bottom: none;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.aboutUs.session01 .img img, .aboutUs.session01 .img iframe {
+	width: 100%;
+}
+
+.aboutUs.session01 ul{
+	list-style: none;
+	margin: 20px 0px;
+	line-height: 2;
+}
+
+.aboutUs.session01 .embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.aboutUs.session01 .embed-responsive .embed-responsive-item,
+.aboutUs.session01 .embed-responsive iframe,
+.aboutUs.session01 .embed-responsive embed,
+.aboutUs.session01 .embed-responsive object,
+.aboutUs.session01 .embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.aboutUs.session01 .embed-responsive-16by9 {
+  padding-bottom: 85%;
+}
+.aboutUs.session01 .embed-responsive-4by3 {
+  padding-bottom: 75%;
+}
+
+
+.contactUs.session01 .title-session{
+	border-bottom: none;
+	text-align: center;
+}
+
+.contactUs.session01 .img img, .contactUs.session01 .img iframe{
+	width: 100%;
+	padding: 20px;
+}
+
+.contactUs.session01 .title span{
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.contactUs.session01 .title{
+	margin-top: 20px;
+}
+
+.contactUs.session01 {
+	background: none;
+}
+
+.breadcrumb {
+    background: url(../img/bgBreadcrum.jpg) center;
+    height: 9vmax;
+    font-size: 3vmax;
+    font-weight: 400;
+    padding-top: 2vmax;
+    color: #2f2f2f;
+    text-align: right;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+
+.service {
+	padding-top: 40px;
+}
+
+.service .ser-img {
+	margin-top: 20px;
+}
+
+.service .ser-img img{
+    max-height: 288px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.service .content-ser{
+	margin-bottom: 30px;
+}
+
+.service .ser-title {
+	font-size: 3vmax;
+	font-weight: 500;
+	margin-bottom: 30px;
+}
+
+.service .ser-sub-title {
+    font-size: 2.5vmax;
+    font-weight: 400;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.service .text{
+	text-align: justify;
+}
+
+.service ul.service-other{
+	list-style: none;
+	-webkit-padding-start: 0px;
+	position: relative;
+}
+.service ul.service-other li{
+	width: 100%;
+	padding: 15px 20px;
+	text-align: center;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	background-color: #d4d4d4;
+}
+
+.service ul.service-other li a{
+	font-size: 22px;
+	color: #5b5b5b;
+
+}
+
+.service ul.service-other li:hover{
+	background-color: #5b5b5b;
+	cursor: pointer;
+}
+
+.service ul.service-other li:hover a{
+	color: #fff;
+}
+
+.service ul.service-other li a:hover{
+	text-decoration: none;
+}
+
+p.car-name {
+	text-align: left;
+	font-weight: 800;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	font-size: 18px;
+	text-align: center;
+}
+
+.trademark {
+	margin-bottom: 40px;
+}
+
+.trademark .ser-title {
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+}
+
+.session01 .col-sm-2 div.ser-name{
+	font-size: 14px;
+	height: 50px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.session01 .col-sm-2 div.ser-name a{
+	color: #2f2f2f;
+	font-size: inherit;
+}
+.session01 .col-sm-2 div.ser-name a:hover{
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.list-product ul{
+	list-style: none;
+}
+
+.list-product ul li{
+	float: left;
+	width: 14%;
+	margin: 0.5%;
+	padding: 0.5%;
+	border: 1px solid #ccc;
+}
+
+.list-product ul li .name{
+	height: 50px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.list-product ul li img{
+	width: 100%;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	font-weight: 500;
+	color: #2f2f2f;
+}
+
+.carousel-caption h3{
+	text-align: center;
+	font-size: 2vmax;
+}
+
+.jumbotron p {
+    margin-bottom: 15px;
+    font-size: 1vmax;
+    font-weight: 300;
+    padding-left: 8vmax;
+    padding-right: 8vmax;
+    text-align: justify;
+}
+
+.carousel-caption {
+	background-color: transparent;
+	opacity: 1;
+}
+
+div {
+	text-align: justify;
+}
+
+nav.navbar.navbar-inverse .container-fluid, .session04 .container-fluid {
+	background-color: transparent;
+}
+
+body{
+	background: url(../img/bgbd.jpg) center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+footer a{
+	text-decoration: none;
+	color: #fff;
+}
+
+footer a:hover{
+	text-decoration: underline;
+	color: #fff;
+}
+
+footer div{
+	margin-bottom: 10px;
+}
+
+.heightVmax {
+	height: 20vmax;
+}
+
+@media (max-width: 425px){
+	.float-left {float: none}
+	.float-right {float: none}
+	.top-header .float-left {float: left;}
+	.top-header .float-right {float: right;}
+
+	.list-product ul li{
+		float: left;
+		width: 45% !important;
+		margin: 0.5%;
+		padding: 0.5%;
+		border: 1px solid #ccc;
+	}
+}
+
+@media (min-width: 425px){
+	.navbar-inverse .navbar-nav>li>a{
+		font-size: 12px;
+	}
+}
+
+@media (min-width: 1082px){
+	.navbar-inverse .navbar-nav>li>a{
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 320px){
+	.navbar-brand img{
+		width: auto;
+		height: 90%;
+	}
+}
+
+@media (max-width: 768px){
+	.carousel-caption{
+		display: none;
+	}
+}
+
+@media (max-width: 767px){
+	#myCarousel .session01 p{
+		display: none;
+	}
+
+	.session01 .col-sm-2 {
+		width: 50%;
+		float: left;
+	}
+	.session01 .col-sm-2 span, .session01 .col-sm-2 div.ser-name{
+		font-size: 14px;
+		height: 50px;
+		text-align: center;
+		padding-top: 10px;
+	}
+	.list-product ul li{
+		float: left;
+		width: 30%;
+		margin: 0.5%;
+		padding: 0.5%;
+		border: 1px solid #ccc;
+	}
+}

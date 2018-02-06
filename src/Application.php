@@ -19,6 +19,7 @@ use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\I18n\Middleware\LocaleSelectorMiddleware;
 
 /**
  * Application setup class.
@@ -45,7 +46,7 @@ class Application extends BaseApplication
             ->add(AssetMiddleware::class)
 
             // Add routing middleware.
-            ->add(new RoutingMiddleware($this));
+        ->add(new RoutingMiddleware($this))->add(new LocaleSelectorMiddleware(['vi_VN', 'ja_JP']));
 
         return $middlewareQueue;
     }
