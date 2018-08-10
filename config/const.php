@@ -7,5 +7,6 @@ define('FLAG_TRUE', 1);
 define('FLAG_INVALID', 2);
 define('LIMIT_CATEGORY_SHOW_MENU', 5);
 define('NEWS_DEFAULT_IMG', '/img/default_news.jpg');
+define('RECORD_ONCE_PAGE', 10);
 
 return [];

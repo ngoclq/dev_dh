@@ -37,9 +37,8 @@ use Cake\I18n\Middleware\LocaleSelectorMiddleware;
  */
 class AppController extends Controller
 {
-    public $helpers = array(
-        'Froala.Froala'
-    );
+    /*public $helpers = array(
+    );*/
     var $language = DEFAULT_LANGUAGE;
     var $Session = null;
     public $paginate = [
@@ -58,13 +57,13 @@ class AppController extends Controller
     public function initialize()
     {
         $this->Session = $this->request->getSession();
-        
+
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->viewBuilder()->setLayout('default_template');
-        
+
         $this->getMenuCategory();
 
         /*
@@ -79,9 +78,9 @@ class AppController extends Controller
         /* if ($this->request->getParam('language')) {
             Configure::write('Config.language', $this->request->getParam('language'));
         } */
-        
+
         DispatcherFactory::add('LocaleSelector');
-        
+
         // Restrict the locales to only vi, jp
         DispatcherFactory::add('LocaleSelector', [
             'locales' => [
@@ -103,7 +102,7 @@ class AppController extends Controller
         $this->set('language', $this->language);
         I18n::setLocale($this->language);
         // End Modify
-        
+
         $this->loadComponent('Auth', [
             'loginRedirect' => [
                 'controller' => 'Homes',
@@ -134,7 +133,7 @@ class AppController extends Controller
             ] */
         ]);
     }
-    
+
     public function beforeFilter(Event $event)
     {
         $this->Auth->authError = __('BBBBBBB.');
@@ -142,7 +141,7 @@ class AppController extends Controller
         $this->Auth->allow();
         $this->Auth->deny(['contact']);
     }
-    
+
     /**
      * Before render callback.
      *
@@ -169,8 +168,70 @@ class AppController extends Controller
         parent::flash($message, router_url_language($url), $pause);
     } */
     // End Modify
-    
+
     public function upload()
+    {
+        $this->autoRender = false;
+        $this->viewBuilder()->setLayout(false);
+        try {
+            $uploadData = '';
+            if($this->request->is('post')) {
+                $resultJ = json_encode([
+                    'link' => ''
+                ]);
+                if(!empty($this->request->getData('upload')['name'])) {
+                    $fileName = $this->request->getData('upload')['name'];
+                    $fileType = $this->request->getData('upload')['type'];
+                    $fileExtTmp = explode(".", $fileName);
+                    $fileExt = end($fileExtTmp);
+                    $strUnique = md5(date("Y-m-d-H-i-s") . '--' . microtime(true) . '--' . $fileName);
+                    $uploadPath = '/uploads/files/';
+                    $filePath = $uploadPath . $strUnique . '.' . $fileExt;
+                    $uploadFile = dirname(APP) . '/webroot' . $filePath;
+                    if(move_uploaded_file($this->request->getData('upload')['tmp_name'], $uploadFile)) {
+                        $filesTbl = TableRegistry::get('Files');
+                        $files = $filesTbl->newEntity();
+                        $files->hash = $strUnique;
+                        $files->name = $fileName;
+                        $files->type = $fileType;
+                        $files->size = $this->request->getData('upload')['size'];
+                        $files->path = $uploadFile;
+                        if($filesTbl->save($files)) {
+                            $urlDownload = Router::url([
+                                'controller' => 'App',
+                                'action' => 'download',
+                                $files->hash
+                            ]);
+                            $resultJ = json_encode([
+                                'uploaded' => true,
+                                'url' => $filePath
+                            ]);
+                            return $this->response->withDisabledCache()->withType('application/json')->withStringBody($resultJ);
+                        } else {
+                            $file = new File($uploadFile);
+                            $file->delete();
+                            throw new \Exception('Lưu thông tin file không thành công');
+                        }
+                    } else {
+                        throw new \Exception('Upload file không thành công');
+                    }
+                } else {
+                    throw new \Exception('File không tồn tại');
+                }
+            }
+        } catch(\ErrorException $ex) {
+            $result[] = 'Có lỗi xảy ra';
+            $resultJ = json_encode([
+                'uploaded' => false,
+                'error' => [
+                    "message" => "could not upload this image"
+                ]
+            ]);
+            return $this->response->withDisabledCache()->withType('application/json')->withStringBody($resultJ);
+        }
+    }
+
+    public function uploadFroala()
     {
         $this->autoRender = false;
         $this->viewBuilder()->setLayout(false);
@@ -270,20 +331,20 @@ class AppController extends Controller
             if(!isset($options['type']) || empty($options['type'])) {
                 $options['type'] = 'all';
             }
-            
+
             if(!isset($options['joins']) || empty($options['joins']) || !is_array($options['joins'])) {
                 $options['joins'] = [];
             }
-            
+
             $query = $tblRegistry->find($options['type'], $options['options'])->join($options['joins']);
             if(isset($options['get_one']) && $options['get_one']) {
                 $query = $query->first();
             }
-            
+
             if(isset($options['count']) && $options['count']) {
                 $query = $query->count();
             }
-            
+
             if(isset($options['to_array']) && $options['to_array']) {
                 $query = $query->toArray();
             }
@@ -326,7 +387,7 @@ class AppController extends Controller
             } else {
                 $tblInfo = $tblRegistry->newEntity();
             }
-            
+
             if($autoSave || $this->request->is([
                 'post',
                 'put'
@@ -348,7 +409,7 @@ class AppController extends Controller
                         'msg' => __('MSG_SAVE_FAIL', __($table))
                     ];
                 }
-                
+
                 if($tblInfo->errors()) {
                     $aryResult['result_flag'] = FLAG_INVALID;
                 }
@@ -375,10 +436,10 @@ class AppController extends Controller
                 'msg' => __('MSG_EXCEPTION', __($table))
             ];
         }
-        
+
         return $aryResult;
     }
-    
+
     public function commonUpdateAll($table, $data, $autoSave = FLAG_FALSE)
     {
         try {
@@ -387,7 +448,7 @@ class AppController extends Controller
                 'msg' => ''
             ];
             $tblRegistry = TableRegistry::get($table);
-            
+
             if($autoSave || $this->request->is([
                 'post',
                 'put'
@@ -419,10 +480,10 @@ class AppController extends Controller
                 'msg' => __('MSG_EXCEPTION', __($table))
             ];
         }
-        
+
         return $aryResult;
     }
-    
+
     public function getListCategory($displayFlag = '')
     {
         try {
@@ -442,19 +503,19 @@ class AppController extends Controller
                     'order_number' => 'ASC'
                 ]
             ];
-            
+
             if(!is_null($displayFlag) && '' !== $displayFlag) {
                 $conditions['conditions'] = [
                     'display_flag' => $displayFlag
                 ];
             }
-            
+
             $newsCategory = TableRegistry::get('NewsCategories');
             $data = $newsCategory->find('all', $conditions);
         } catch(\ErrorException $ex) {
             $data = [];
         }
-        
+
         return $data;
     }
 
@@ -471,7 +532,7 @@ class AppController extends Controller
             'title' => "NewsCategories.title_{$this->language}",
         ];
         $options = ['id' => [], 'not_in_id' => FLAG_FALSE, 'fields' => $aryField, 'limit' => LIMIT_CATEGORY_SHOW_MENU];
-        
+
         $tblRegistry = TableRegistry::get('NewsCategories');
         $categories = $tblRegistry->getNewsCategoryCommon($options);
         $aryCategory = [];
@@ -485,7 +546,7 @@ class AppController extends Controller
 
         $this->Session->write('categories', $categories);
         $this->set('categories', $categories);
-        
+
     }
 
     public function generateString($s_length = 8)
@@ -517,6 +578,7 @@ class AppController extends Controller
         }
         return $result;
     }
+
     public function parserImg($str)
     {
         if (empty($str) || is_array($str)) {
@@ -531,15 +593,34 @@ class AppController extends Controller
                 /* $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $imageInfo, $images);
                  //preg_match_all( '@src="([^"]+)"@' , $imageInfo, $images );
                  $aryImage[] = $images[1][0]; */
-                
+
                 preg_match_all('/(alt|title|src)=[\'"]([^\'"]+)[\'"].*>/i', $imageInfo, $images);
                 $image = array_fill_keys($images[1], $images[2][0]);
                 $aryImage[] = $image;
             }
-            
+
             $contents = preg_replace("/<img[^>]+\>/i", '', $str);
         }
         return ['str_contents' => $contents, 'images' => $aryImage];
     }
 
+    public function paging()
+    {
+        $page = (int)$this->request->getQuery('page', 1);
+        if (empty($page) || $page < 1) {
+            $page = 1;
+        }
+
+        $limit = RECORD_ONCE_PAGE;
+        if (empty($limit) || $limit < 0) {
+            $limit = 10;
+        }
+
+        $offset = 0;
+        if ($page) {
+            $offset = ($page - 1) * $limit;
+        }
+
+        return [$limit, $offset];
+    }
 }

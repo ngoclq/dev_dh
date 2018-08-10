@@ -1,4 +1,3 @@
-
 <div class="page page-form">
 	<div class="row">
 		<div class="col-md-10">
@@ -49,7 +48,7 @@
 								</label>
 							</div>
 							<div class="col-sm-8">
-								<?=  $this->Form->control('body_vi', ['label' => false, 'class' => "form-control"]) ?>
+								<?=  $this->Form->control('body_vi', ['label' => false, 'class' => "form-control ckeditor"]) ?>
 							</div>
 						</div>
 						<div class="form-group">
@@ -76,7 +75,7 @@
 								</label>
 							</div>
 							<div class="col-sm-8">
-								<?=  $this->Form->control('body_jp', ['label' => false, 'class' => "form-control"]) ?>
+								<?=  $this->Form->control('body_jp', ['label' => false, 'class' => "form-control ckeditor"]) ?>
 							</div>
 						</div>
 						<div class="form-group">
@@ -108,4 +107,22 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+    ClassicEditor
+        .create(
+            document.querySelector('.ckeditor'),
+            {
+                ckfinder: {
+                    uploadUrl: '/upload'
+                }
+            }
+        )
+        .then(
+            editor => {
+            }
+        )
+        .catch( error => {
+        console.error( error );
+    } );
 
+</script>

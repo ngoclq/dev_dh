@@ -48,12 +48,10 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->css('home.css') ?>
     <?= $this->Html->css('common.css') ?>
     <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
-    
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->Html->script('jquery-3.2.1.min.js', ['inline' => 'false']) ?>
-    <?= $this->Html->css('Froala.froala_editor.min.css') ?>
-    <?= $this->Html->script('Froala.froala_editor.min.js') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body class="home">

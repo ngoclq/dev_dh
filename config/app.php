@@ -14,8 +14,8 @@ Configure::write('Config.functionException', [
 ]);
 
 Configure::write('Config.Facebook', [
-    'app_id' => '',
-    'app_secret' => ''
+    'app_id' => '187297352007912',
+    'app_secret' => '68b21c5e93a4e0b05333e278dd5e06d5'
 ]);
 
 return [
@@ -263,8 +263,8 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
+            'username' => 'ngoclq',
+            'password' => 'Quang@ngoc123',
             'database' => 'dev_jp',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
@@ -303,8 +303,8 @@ return [
             'persistent' => false,
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
+            'username' => 'root',
+            'password' => 'ngoclq',
             'database' => 'dev_jp',
             'encoding' => 'utf8',
             'timezone' => 'UTC',

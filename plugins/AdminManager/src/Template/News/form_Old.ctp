@@ -1,4 +1,4 @@
-<?= $this->Froala->plugin();?>
+
 <div class="row">
 	<div class="columns large-12">
 		<h1>Blog articles</h1>
@@ -19,8 +19,6 @@
 			</label>
 		</div>
 		<?=  $this->Form->control('date_active', ['label' => '', 'class' => 'items_disable' ]) ?>
-		<?=  $this->Froala->editor('#body-vi', ['minHeight' => '200px', 'maxHeight' => '400px']) ?>
-		<?=  $this->Froala->editor('#body-jp', ['minHeight' => '200px', 'maxHeight' => '400px']) ?>
 		<div>
 			<?=  $this->Form->button(__('BTN_SAVE')) ?>
 			&nbsp;

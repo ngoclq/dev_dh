@@ -10,7 +10,7 @@ class NewsController extends AdminController
 {
     public $paginate = [
     'fields' => [],
-    'limit' => 10,
+    'limit' => 3,
     'order' => [
         'News.id' => 'asc'
     ]
@@ -24,10 +24,11 @@ class NewsController extends AdminController
         $this->set('menu_item', 'NEWS');
     }
 
-    
+
     public function index($id = null)
     {
-        /* $aryField = [
+        list($limit, $offset) = $this->paging();
+        $aryField = [
             'News.id',
             'News.news_category_id',
             "News.title_vi",
@@ -38,13 +39,17 @@ class NewsController extends AdminController
         if (!is_null($id) && '' !== $id) {
             $options['category_id'] = [$id];
         }
+        $options['limit'] = $limit;
+        $options['offset'] = $offset;
         $tblRegistry = TableRegistry::get('News');
         $newsResult = $tblRegistry->getNewsCommon($options);
-        $this->set('newsResult', $newsResult); */
-        
-        $tblRegistry = TableRegistry::get('News');
+        $this->set('newsResult', $newsResult);
+
+
+
+        /* $tblRegistry = TableRegistry::get('News');
         $query = $tblRegistry->find('all');
-        $this->set('newsResult', $this->paginate($query));
+        $this->set('newsResult', $this->paginate($query)); */
     }
 
     public function form($id = null)
@@ -71,7 +76,7 @@ class NewsController extends AdminController
         $this->set(compact('news_category_id'));
         $this->set('aryHour', $aryHour);
         $this->set('aryMinute', $aryMinute);
-        
+
     }
 
     private function _getListCategoryFillComboxBox($displayFlag = '')
@@ -84,7 +89,7 @@ class NewsController extends AdminController
         foreach($listCategory as $key => $info) {
             $data [$info->id] = $info->title_vi;
         }
-        
+
         return $data;
     }
 }

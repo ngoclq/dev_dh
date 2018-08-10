@@ -265,7 +265,10 @@ class NewsTable extends TableCommon
         if(isset($options['limit'])) {
             $condition['limit'] = $options['limit'];
         }
-        
+        if(isset($options['offset'])) {
+            $condition['offset'] = $options['offset'];
+        }
+
         $joins = [
             'NewsCategories' => [
                 'table' => 'news_categories',

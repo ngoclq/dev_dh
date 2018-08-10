@@ -20,7 +20,8 @@
 <?= $this->Html->css('common.css') ?>
 <?= $this->Html->css('AdminManager.main.css') ?>
 <?= $this->fetch('css') ?>
-<?= $this->Html->script('jquery-3.2.1.min.js', ['inline' => 'false']) ?>
+<?= $this->Html->script('jquery.min.js', ['inline' => 'false']) ?>
+<?= $this->Html->script('ckeditor5/ckeditor.js') ?>
 <?= $this->fetch('script') ?>
 
 </head>
@@ -45,8 +46,5 @@
 		</div>
 	</div>
 
-	<?= $this->Html->script('AdminManager.vendor.js') ?>
-	<?= $this->Html->script('AdminManager.ui.js') ?>
-	<?= $this->Html->script('AdminManager.app.js') ?>
 </body>
 </html>

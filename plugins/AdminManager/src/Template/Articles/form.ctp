@@ -1,4 +1,3 @@
-<?= $this->Froala->plugin();?>
 <div class="row">
 	<div class="columns large-12">
 		<h1>Blog articles</h1>
