@@ -48,7 +48,7 @@
 								</label>
 							</div>
 							<div class="col-sm-8">
-								<?=  $this->Form->control('body_vi', ['label' => false, 'class' => "form-control ckeditor"]) ?>
+								<?=  $this->Form->control('body_vi', ['label' => false, 'id' => 'body_vi', 'class' => "form-control"]) ?>
 							</div>
 						</div>
 						<div class="form-group">
@@ -75,7 +75,7 @@
 								</label>
 							</div>
 							<div class="col-sm-8">
-								<?=  $this->Form->control('body_jp', ['label' => false, 'class' => "form-control ckeditor"]) ?>
+								<?=  $this->Form->control('body_jp', ['label' => false, 'id' => 'body_jp', 'class' => "form-control"]) ?>
 							</div>
 						</div>
 						<div class="form-group">
@@ -87,6 +87,7 @@
 								<?=  $this->Form->control('keyword_jp', ['label' => false, 'class' => "form-control"]) ?>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<div class="col-sm-4">
 								<label for=""> <?= __('ACTIVE_DATE') ?>
@@ -108,21 +109,40 @@
 	</div>
 </div>
 <script type="text/javascript">
+    var bodyVi = '';
+    var bodyJp = '';
     ClassicEditor
         .create(
-            document.querySelector('.ckeditor'),
+            document.querySelector('#body_vi'),
             {
-                ckfinder: {
-                    uploadUrl: '/upload'
-                }
+                ckfinder: { uploadUrl: '/upload'}
             }
-        )
-        .then(
+        ).then(
             editor => {
+                bodyVi = editor.getData();
             }
-        )
-        .catch( error => {
+        ).catch( error => {
         console.error( error );
     } );
+
+    ClassicEditor
+        .create(
+            document.querySelector('#body_jp'),
+            {
+                ckfinder: {uploadUrl: '/upload'}
+            }
+        ).then(
+        editor => {
+            bodyJp = editor.getData();
+        }
+    ).catch( error => {
+        console.error( error );
+    } );
+    $( document ).ready(function() {
+        $(document).on("mousedown",".btn-success",function() {
+            $('#body_vi').val(bodyVi);
+            $('#body_jp').val(bodyVi);
+        });
+    });
 
 </script>

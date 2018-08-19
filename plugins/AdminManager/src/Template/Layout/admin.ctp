@@ -46,5 +46,8 @@
 		</div>
 	</div>
 
+    <?= $this->Html->script('AdminManager.vendor.js') ?>
+    <?= $this->Html->script('AdminManager.ui.js') ?>
+    <?= $this->Html->script('AdminManager.app.js') ?>
 </body>
 </html>
