@@ -46,8 +46,19 @@
           <?php }?>
             <div class="col-sm-2">
               <p><?= $key + 1 ?></p>
-              <img src="/asset/default_template/img/tintuc01.jpg" class="img-responsive" style="width:100%" alt="Image">
-              <div class="ser-name"><a tabindex="-1" href="/pages/rua_xe_cao_cap"><?= $aryNews->title ?></a></div>
+                <?= $this->Html->link(
+                    $this->Html->image($aryNews->image, ["alt" => "", "class" => "img-responsive", 'style' => "width:100%;"]),
+                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id],
+                    ['escape' => false]
+                );
+                ?>
+              <div class="ser-name">
+                  <?= $this->Html->link($aryNews->title, [ 'controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id]) ?>
+              </div>
+                <div class="ser-name">
+                    <?php $body = mb_substr(strip_tags($aryNews->body), 0, 100); ?>
+                <?= $this->Html->link($body, [ 'controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id]) ?>
+            </div>
             </div>
               <?php if(!($key % 4) || $key == count($aryNews)) { ?>
           </div>
