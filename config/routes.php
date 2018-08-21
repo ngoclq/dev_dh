@@ -40,7 +40,7 @@ if(!empty($uri) && mb_strlen($uri) > 1) {
                 'language' => implode('|', $languageAccept)
             ];
         }
-        
+
         if(!in_array($language, $languageAccept)) {
             $language = DEFAULT_LANGUAGE;
         }
@@ -77,7 +77,7 @@ Router::addUrlFilter(function ($params, $request) {
     } elseif(!isset($params['language']) || !in_array($params['language'], $languageAccept)) {
         $params['language'] = DEFAULT_LANGUAGE;
     }
-    
+
     return $params;
 });
 
@@ -91,7 +91,7 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
         'controller' => 'Homes',
         'action' => 'home'
     ]);
-    
+
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
@@ -99,7 +99,7 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
         'controller' => 'Pages',
         'action' => 'display'
     ]);
-    
+
     $routes->connect('/upload', [
         'controller' => 'App',
         'action' => 'upload'
@@ -112,25 +112,25 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
     ])->setPass([
         'id'
     ]);
-    
+
     // News top
     $routes->get('/news/', [
         'controller' => 'News',
         'action' => 'index'
     ]);
-    
+
     // News detail
-    $routes->connect('/news/index/:id', [
+    $routes->connect('/news/:id', [
         'controller' => 'News',
         'action' => 'index'
     ])->setPatterns([
-        'id' => '\d?'
+        'id' => '\d+'
     ])->setPass([
         'id'
     ]);
-    
+
     // News detail
-    $routes->connect('/news/:id', [
+    $routes->connect('/news/detail/:id', [
         'controller' => 'News',
         'action' => 'detail'
     ])->setPatterns([
@@ -138,31 +138,31 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
     ])->setPass([
         'id'
     ]);
-    
+
     // Related News
     $routes->connect('/news/related', [
         'controller' => 'News',
         'action' => 'getRelated'
     ]);
-    
+
     // Top ranking News
     $routes->connect('/news/top', [
         'controller' => 'News',
         'action' => 'getTop'
     ]);
-    
+
     // Lastest News
     $routes->connect('/news/latest', [
         'controller' => 'News',
         'action' => 'getLatestNews'
     ]);
-    
+
     // Lastest News
     $routes->connect('/news/category', [
         'controller' => 'News',
         'action' => 'getNewsCategory'
     ]);
-    
+
     // post News
     $routes->connect('/news/comment', [
         'controller' => 'News',
@@ -173,7 +173,7 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
         'controller' => 'News',
         'action' => 'getComment'
     ]);
-    
+
     // Contacts
     $routes->connect('/contacts/detail/:id', [
         'controller' => 'Contacts',
@@ -187,7 +187,7 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
     ])->setPass([
         'id'
     ]);
-    
+
     /**
      * Connect catchall routes for all controllers.
      *

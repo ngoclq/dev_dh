@@ -34,7 +34,9 @@
 <?php foreach($aryNews as $key => $aryCate):?>
 <div class="session01">
   <div class="services-ls container-fluid bg-3">
-    <h3 class="title-session"><?= $aryCate['title'] ?></h3>
+    <h3 class="title-session">
+        <?= $this->Html->link($aryCate['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $aryCate['id']]) ?>
+    </h3>
     <div class="row">
       <div id="myCarousel02" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
