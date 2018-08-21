@@ -31,10 +31,10 @@
 				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu &nbsp;<i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="aboutUs.html">Giới thiệu chung</a></li>
-						<li><a tabindex="-1" href="#">Tầm nhìn sứ mệnh</a></li>
-						<li><a tabindex="-1" href="#">Nguyên tắc hoạt động</a></li>
-						<li><a tabindex="-1" href="#">Đội ngũ nhân sự</a></li>
+                        <li><?= $this->Html->link('Giới thiệu chung', [ 'controller' => 'Infos', 'action' => 'about', '_method' => 'GET'], ['tabindex' => '-1']) ?></li>
+                        <li><?= $this->Html->link('Tầm nhìn sứ mệnh', [ 'controller' => 'Infos', 'action' => 'vision', '_method' => 'GET'], ['tabindex' => '-1']) ?></li>
+                        <li><?= $this->Html->link('Nguyên tắc hoạt động', [ 'controller' => 'Infos', 'action' => 'privacy', '_method' => 'GET'], ['tabindex' => '-1']) ?></li>
+                        <li><?= $this->Html->link('Đội ngũ nhân sự', [ 'controller' => 'Infos', 'action' => 'groups', '_method' => 'GET'], ['tabindex' => '-1']) ?></li>
 					</ul></li>
 				<li><a href="aboutUs.html">Tin tức Nhật</a></li>
 				<li><a href="#">Du học Nhật</a></li>

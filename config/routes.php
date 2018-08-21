@@ -118,6 +118,29 @@ Router::scope($schema, $filer, function (RouteBuilder $routes) {
         'controller' => 'News',
         'action' => 'index'
     ]);
+    $routes->get('/about/', [
+        'controller' => 'Infos',
+        'action' => 'index',
+        'id' => 1
+    ])->setPass([
+        'id'
+    ]);
+    $routes->get('/about/', [
+        'controller' => 'Infos',
+        'action' => 'about',
+    ]);
+    $routes->get('/vision/', [
+        'controller' => 'Infos',
+        'action' => 'vision',
+    ]);
+    $routes->get('/privacy/', [
+        'controller' => 'Infos',
+        'action' => 'privacy',
+    ]);
+    $routes->get('/groups/', [
+        'controller' => 'Infos',
+        'action' => 'groups'
+    ]);
 
     // News detail
     $routes->connect('/news/:id', [
