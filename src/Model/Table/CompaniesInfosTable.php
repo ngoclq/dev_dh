@@ -35,4 +35,32 @@ class CompaniesInfosTable extends TableCommon
     }
 
 
+    public function getInfoCommon($options = ['id' => []])
+    {
+        $conditionOptions = [];
+        if (!isset($options['fields']) || !is_array($options['fields']) || empty($options['fields'])) {
+            $condition = [
+                'fields' => [
+                    'CompaniesInfos.id',
+                    'title' => "CompaniesInfos.title_{$this->language}",
+                    'body' => "CompaniesInfos.body_{$this->language}"
+                ]
+            ];
+        } else {
+            $condition = [
+                'fields' => $options['fields']
+            ];
+        }
+
+        if(isset($options['category_id']) && !empty($options['category_id'])) {
+            $condition['conditions']['`CompaniesInfos`.`news_category_id`'] = $options['category_id'];
+        }
+
+        $conditionOptions['type'] = 'all';
+        $conditionOptions['options'] = $condition;
+        $conditionOptions['to_array'] = FLAG_TRUE;
+
+        return $this->commonFind('CompaniesInfos', $conditionOptions);
+    }
+
 }

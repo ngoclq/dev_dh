@@ -319,6 +319,24 @@ msgid "MOBILE"
 msgstr "Số di động"
 
 
+/*==========================SITE INFO AREA=================================*/
+
+msgid "INFO"
+msgstr "Quản lý thông tin web site"
+
+msgid "ABOUT"
+msgstr "Giới Thiệu"
+
+msgid "VISION"
+msgstr "Tầm nhìn sứ mệnh"
+
+msgid "PRIVACY"
+msgstr "Nguyên tắc hoạt động"
+
+msgid "GROUP"
+msgstr "Đội ngũ nhân sự"
+
+
 /*==========================NEWS AREA=================================*/
 
 msgid "NEWS"

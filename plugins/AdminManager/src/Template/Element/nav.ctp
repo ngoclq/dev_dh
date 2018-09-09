@@ -5,6 +5,12 @@
 		data-collapse-nav
 		data-highlight-active>
 		<li class="active"><a href="<?= $this->Url->build(['controller' => 'Home', 'action' => 'home', '_method' => 'GET', 'plugin' => 'AdminManager']); ?>"> <i class="glyphicon glyphicon-home"></i><span><?= __('HOME')?></span> </a></li>
+		<li  class="<?php if (isset($menu_item) && $menu_item == 'INFO') {?> open <?php }?>">
+			<a href="<?= $this->Url->build(['controller' => 'Infos', 'action' => 'index', '_method' => 'GET', 'plugin' => 'AdminManager']); ?>">
+				<i class="fa fa-caret-right glyphicon glyphicon-list"></i>
+				<span><?= __('INFO')?></span>
+			</a>
+		</li>
 		<li  class="<?php if (isset($menu_item) && $menu_item == 'NEWS') {?> open <?php }?>">
 			<a><i class="fa fa-magic"></i><span><?= __('NEWS')?></span></a>
 			<ul <?php if (isset($menu_item) && $menu_item == 'NEWS') {?> style="display: block;" <?php }?>>
