@@ -31,59 +31,55 @@
     </div>
   </div>
 </div>
-<?php foreach($aryNews as $key => $aryCate):?>
-<div class="session01">
-  <div class="services-ls container-fluid bg-3">
-    <h3 class="title-session">
-        <?= $this->Html->link($aryCate['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $aryCate['id']]) ?>
-    </h3>
-    <div class="row">
-      <div id="myCarousel02" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
+<?php foreach($aryNews as $keyCate => $aryCate):?>
 
-            <?php foreach($aryCate['list'] as $key => $aryNews):?>
-            <?php if(!($key % 5)) {?>
-          <div class="item <?php if(!$key) {?>active <?php } ?>">
-            <div class="col-sm-1"></div>
-          <?php }?>
-            <div class="col-sm-2">
-              <p><?= $key + 1 ?></p>
-                <?= $this->Html->link(
-                    $this->Html->image($aryNews->image, ["alt" => "", "class" => "img-responsive", 'style' => "width:100%;"]),
-                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id],
-                    ['escape' => false]
-                );
-                ?>
-              <div class="ser-name">
-                  <?= $this->Html->link($aryNews->title, [ 'controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id]) ?>
-              </div>
-                <div class="ser-name">
-                    <?php $body = mb_substr(strip_tags($aryNews->body), 0, 100); ?>
-                <?= $this->Html->link($body, [ 'controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id]) ?>
+<div class="py-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>
+                    <?= $this->Html->link($aryCate['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $aryCate['id']]) ?>
+                    <br>
+                </h1>
             </div>
-            </div>
-              <?php if(!($key % 4) || $key == count($aryNews)) { ?>
-          </div>
-            <?php } ?>
-        <?php endforeach; ?>
-
         </div>
+    </div>
+</div>
+<div class="py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class=""><?= $aryCate['description']?></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <a class="left carousel-control" href="#myCarousel02" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"><i class="fa fa-chevron-circle-left fa-3" aria-hidden="true"></i></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel02" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-left"><i class="fa fa-chevron-circle-right fa-3" aria-hidden="true"></i></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-  </div>
+<?php foreach($aryCate['list'] as $key => $aryNews):?>
+<?php if(!($key % 4)) {?>
+<div class="py-2">
+    <div class="container">
+        <div class="row">
+<?php }?>
+            <div class="col-md-3">
+                <div class="card">
+                    <?= $this->Html->image($aryNews->image, ["alt" => "", "class" => "card-img-top", 'style' => ""]) ?>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $aryNews->title ?></h5>
+                        <p class="card-text">
+                            <?= mb_substr(strip_tags($aryNews->body), 0, 100) ?>
+                        </p>
+                        <?= $this->Html->link(__('VIEW_MORE'), ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $aryNews->id], ['class' => 'btn btn-danger']) ?>
+                    </div>
+                </div>
+            </div>
+<?php if(($key && !($key % 3)) || (1 + $key) == count($aryCate['list'])) { ?>
+        </div>
+    </div>
 </div>
-<div class="session02 text-center heightVmax">
-  <img src="/asset/default_template/img/bgqc.png" class="img-responsive"/>
-</div>
-</div>
+<?php } ?>
+<?php endforeach; ?>
+
 <?php endforeach; ?>
 <div class="session03">
   <div class="container-fluid bg-3">

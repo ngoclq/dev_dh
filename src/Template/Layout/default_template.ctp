@@ -15,13 +15,14 @@
   <?= $this->Html->meta('og:title',  $this->fetch('title') . '｜' . __('WEBSITE_TITLE')); ?>
   <?= $this->Html->meta('og:image', 'article'); ?>
   <?= $this->Html->meta('og:description', $this->fetch('description') . ',' . __('WEBSITE_DESCRIPTION')); ?>
-  
+
   <?= $this->Html->css([
 		'/asset/default_template/css/bootstrap.min.css',
 		'/asset/default_template/css/custom.css',
 		'/asset/default_template/font/css/font-awesome.css',
 		'/asset/default_template/font/fonts/roboto.css',
-		'common.css',
+        'common.css',
+        'theme.css',
   ]) ?>
   <!-- <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> -->
   <?= $this->fetch('css') ?>
@@ -30,12 +31,12 @@
   <?= $this->Html->script('ckeditor/ckeditor.js') ?>
   <?= $this->fetch('script') ?>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-    
+
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;

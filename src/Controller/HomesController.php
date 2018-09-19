@@ -65,6 +65,7 @@ class HomesController extends AppController
                     $aryNews[] = [
                         'id' => $newsCate['id'],
                         'title' => $newsCate['title'],
+                        'description' => $newsCate['description'],
                         'list' => $newsEachCate
                     ];
                 }

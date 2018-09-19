@@ -22,7 +22,9 @@ class NewsController extends AppController
             'News.news_category_id',
             'title' => "News.title_{$this->language}",
             'body' => "News.body_{$this->language}",
-            'News.created'
+            'News.created',
+            'category_title' => "NewsCategories.title_{$this->language}",
+            'category_description' => "NewsCategories.description_{$this->language}",
         ];
         $options = ['category_id' => [], 'not_in_id' => FLAG_FALSE, 'fields' => $aryField];
         if (!is_null($id) && '' !== $id) {
@@ -50,7 +52,7 @@ class NewsController extends AppController
         $newsThreadsTbl = TableRegistry::get('NewsThreads');
         $newsThreads = $newsThreadsTbl->newEntity();
         $this->set('newsThreads', $newsThreads);
-        
+
         // Start Save to news_history
         $historyInfo = [];
         $historyInfo['news_id'] = $id;
@@ -58,8 +60,8 @@ class NewsController extends AppController
         $this->commonSave('NewsHistories', null, $historyInfo, FLAG_TRUE);
         // End Save to news_history
     }
-    
-    
+
+
     public function getRelated()
     {
         if (!$this->request->is(['ajax'])) {
@@ -71,11 +73,11 @@ class NewsController extends AppController
         }
         $this->autoRender = FLAG_FALSE;
         $this->viewBuilder()->setLayout(FLAG_FALSE);
-        
+
         $result = ['result' => FLAG_FALSE, 'data' => []];
         $id = $this->request->getData('id');
         $categoryId = $this->request->getData('categoryId');
-        
+
         $aryField = [
             'News.id',
             'News.news_category_id',
@@ -96,12 +98,12 @@ class NewsController extends AppController
                         /* $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $imageInfo, $images);
                          //preg_match_all( '@src="([^"]+)"@' , $imageInfo, $images );
                          $aryImage[] = $images[1][0]; */
-                        
+
                         preg_match_all('/(alt|title|src)=[\'"]([^\'"]+)[\'"].*>/i',$imageInfo, $images);
                         $image = array_fill_keys($images[1], $images[2][0]);
                         $aryImage[] = $image;
                     }
-                    
+
                     $contents = preg_replace("/<img[^>]+\>/i", '', $info['body']);
                 }
                 /* $newsResult[$key]['body'] = $linkH->truncate($contents, 100);
@@ -110,10 +112,10 @@ class NewsController extends AppController
             }
             $result = ['result' => FLAG_TRUE, 'data' => $newsResult];
         }
-        
+
         return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
     }
-    
+
     /**
      * Lay danh sach bai viet co dinh hiển thị Top
      * @return unknown|\Cake\Http\Response
@@ -137,10 +139,10 @@ class NewsController extends AppController
         if (!empty($newsResult)) {
             $result = ['result' => FLAG_TRUE, 'data' => $newsResult];
         }
-        
+
         return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
     }
-    
+
     public function getLatestNews()
     {
         if (!$this->request->is(['ajax'])) {
@@ -152,7 +154,7 @@ class NewsController extends AppController
         }
         $this->autoRender = FLAG_FALSE;
         $this->viewBuilder()->setLayout(FLAG_FALSE);
-        
+
         $result = ['result' => FLAG_FALSE, 'data' => []];
         $id = $this->request->getData('id');
         $categoryId = $this->request->getData('categoryId');
@@ -165,7 +167,7 @@ class NewsController extends AppController
         ];
 
         $options = ['id' => [], 'category_id' => [], 'not_in_id' => FLAG_TRUE, 'fields' => $aryField];
-        
+
         if (!is_null($id) && '' !== $id) {
             $options['id'] = [$id];
         }
@@ -181,10 +183,10 @@ class NewsController extends AppController
         if (!empty($newsResult)) {
             $result = ['result' => FLAG_TRUE, 'data' => $newsResult];
         }
-        
+
         return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
     }
-    
+
     public function getNewsCategory()
     {
         if (!$this->request->is(['ajax'])) {
@@ -196,26 +198,26 @@ class NewsController extends AppController
         }
         $this->autoRender = FLAG_FALSE;
         $this->viewBuilder()->setLayout(FLAG_FALSE);
-        
+
         $result = ['result' => FLAG_FALSE, 'data' => []];
         $id = $this->request->getData('id');
         $aryField = [
             'NewsCategories.id',
             'title' => "NewsCategories.title_{$this->language}",
         ];
-        
+
         $options = ['id' => [], 'not_in_id' => FLAG_FALSE, 'fields' => $aryField];
-        
+
         if (!is_null($id) && '' !== $id) {
             $options['id'] = [$id];
         }
-        
+
         $tblRegistry = TableRegistry::get('NewsCategories');
         $newsResult = $tblRegistry->getNewsCategoryCommon($options);
         if (!empty($newsResult)) {
             $result = ['result' => FLAG_TRUE, 'data' => $newsResult];
         }
-        
+
         return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
     }
 
@@ -230,7 +232,7 @@ class NewsController extends AppController
         }
         $this->autoRender = FLAG_FALSE;
         $this->viewBuilder()->setLayout(FLAG_FALSE);
-        
+
         $result = ['result' => FLAG_FALSE, 'data' => []];
         $newsId = $this->request->getData('news_id');
         $title = $this->request->getData('title');
@@ -244,7 +246,7 @@ class NewsController extends AppController
         $comment['body'] = $body;
         $comment['locale'] = $locale;
         $comment['user_id'] = '1';
-        
+
         $result = $this->commonSave('NewsThreads', null, $comment, FLAG_TRUE);
         error_log(print_r($result, true) . "\n\n=====================\n", 3, '/var/www/DEV_JP/logs/debug_result.txt');
         // End Save to news_history
@@ -275,9 +277,9 @@ class NewsController extends AppController
         $result = ['result' => FLAG_FALSE, 'data' => []];
         $newsId = $this->request->getData('news_id');
         $locale = $this->request->getData('locale');
-        
+
         $options = ['news_id' => [$newsId], 'locale' => $locale, 'not_in_id' => FLAG_FALSE, 'fields' => []];
-        
+
         $tblRegistry = TableRegistry::get('NewsThreads');
         $newsResult = $tblRegistry->getNewsThreadsCommon($options);
         if (!empty($newsResult)) {
