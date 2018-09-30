@@ -25,13 +25,57 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <!-- ============================== contents Area ============================== -->
+
+<div class="py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1><?= $newsInfo['title']; ?>
+                    <br>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-fluid d-block" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
+            </div>
+            <div class="col-md-9">
+                <p class="text-justify"><?= $newsInfo['body']; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="lead"><?= __('NEWS_RELATED') ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="box-newslist box-news-related">
+                    <li class="e_news_relate_list_templatte items_hiden">
+                        <a class="title" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', '_xxxx_xx_xxxx_']); ?>"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="contents" class="cf">
 	<div id="main">
 		<section class="c_section_contents">
 			<div class="cf  title">
-				<h1 class="site_center_headline_title mag-b10">
-					<?= $newsInfo['title']; ?>
-				</h1>
 				<p
 					style="font-size: 0.85em; color: #47885e; margin: -20px 0 10px 10px;">
 					<?= $newsInfo['created']->i18nFormat(__('TIMES_MINUTES')); ?>
@@ -45,8 +89,7 @@
 					<div style="float: left; margin-left: 10px;"></div>
 					<div style="clear: both;"></div>
 				</div>
-				<?= $newsInfo['body']; ?>
-				<br>
+
 				<p class="mt10">
 					<?= __('KEY_WORD') ?>
 					： <a class="" href="">イベント・リリース</a>
@@ -54,23 +97,10 @@
 			</div>
 			<!-- /.box-news_contents -->
 		</section>
-		
+
 		<?= $this->element('News/_comment'); ?>
 		<!-- /section.c_section_contents -->
-		<section class="box-newslist box-news-related">
-			<h1>
-				<?= __('NEWS_RELATED') ?>
-			</h1>
-			<div class="e_news_relate_list_templatte items_hiden e_carenews_list_article">
-				<h3>
-					<a class="title" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', '_xxxx_xx_xxxx_']); ?>"></a>
-				</h3>
-				<p class="content"></p>
-				<a class="continue" href="">
-					<?= __('VIEW_MORE') ?>
-				</a>
-			</div>
-		</section>
+
 		<div style="clear: both;"></div>
 		<section class="box-newslist box-news-ranking">
 			<h1>
@@ -92,15 +122,6 @@
 		<div class="cb"></div>
 	</div>
 	<!-- /div#main -->
-	<!-- ============================== side Area ============================== -->
-	<div id="sidebar">
-		<div class="mt10 center">
-			<p style="text-align: center;">&nbsp;</p>
-		</div>
-		<?= $this->element('News/_side_right_news_suggest'); ?>
-		<?= $this->element('News/_side_right_news_latest'); ?>
-		<?= $this->element('News/_side_right_menu_other'); ?>
-	</div>
-	<!-- /div#sidebar -->
+
 </div>
 <!-- /contents -->

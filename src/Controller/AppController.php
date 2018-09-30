@@ -12,6 +12,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -62,7 +63,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->viewBuilder()->setLayout('default_template');
+        $this->viewBuilder()->setLayout('default_ping');
 
         $this->getMenuCategory();
 
@@ -160,13 +161,13 @@ class AppController extends Controller
         }
     }
     // Start Modify
-   /*  public function redirect($url, $status = null, $exit = true) {
-        parent::redirect(router_url_language($url), $status, $exit);
-    }
+    /*  public function redirect($url, $status = null, $exit = true) {
+         parent::redirect(router_url_language($url), $status, $exit);
+     }
 
-    public function flash($message, $url, $pause = 1) {
-        parent::flash($message, router_url_language($url), $pause);
-    } */
+     public function flash($message, $url, $pause = 1) {
+         parent::flash($message, router_url_language($url), $pause);
+     } */
     // End Modify
 
     public function upload()
@@ -175,11 +176,11 @@ class AppController extends Controller
         $this->viewBuilder()->setLayout(false);
         try {
             $uploadData = '';
-            if($this->request->is('post')) {
+            if ($this->request->is('post')) {
                 $resultJ = json_encode([
                     'link' => ''
                 ]);
-                if(!empty($this->request->getData('upload')['name'])) {
+                if (!empty($this->request->getData('upload')['name'])) {
                     $fileName = $this->request->getData('upload')['name'];
                     $fileType = $this->request->getData('upload')['type'];
                     $fileExtTmp = explode(".", $fileName);
@@ -188,7 +189,7 @@ class AppController extends Controller
                     $uploadPath = '/uploads/files/';
                     $filePath = $uploadPath . $strUnique . '.' . $fileExt;
                     $uploadFile = dirname(APP) . '/webroot' . $filePath;
-                    if(move_uploaded_file($this->request->getData('upload')['tmp_name'], $uploadFile)) {
+                    if (move_uploaded_file($this->request->getData('upload')['tmp_name'], $uploadFile)) {
                         $filesTbl = TableRegistry::get('Files');
                         $files = $filesTbl->newEntity();
                         $files->hash = $strUnique;
@@ -196,7 +197,7 @@ class AppController extends Controller
                         $files->type = $fileType;
                         $files->size = $this->request->getData('upload')['size'];
                         $files->path = $uploadFile;
-                        if($filesTbl->save($files)) {
+                        if ($filesTbl->save($files)) {
                             $urlDownload = Router::url([
                                 'controller' => 'App',
                                 'action' => 'download',
@@ -219,7 +220,7 @@ class AppController extends Controller
                     throw new \Exception('File không tồn tại');
                 }
             }
-        } catch(\ErrorException $ex) {
+        } catch (\ErrorException $ex) {
             $result[] = 'Có lỗi xảy ra';
             $resultJ = json_encode([
                 'uploaded' => false,
@@ -237,11 +238,11 @@ class AppController extends Controller
         $this->viewBuilder()->setLayout(false);
         try {
             $uploadData = '';
-            if($this->request->is('post')) {
+            if ($this->request->is('post')) {
                 $resultJ = json_encode([
                     'link' => ''
                 ]);
-                if(!empty($this->request->getData('file')['name'])) {
+                if (!empty($this->request->getData('file')['name'])) {
                     $fileName = $this->request->getData('file')['name'];
                     $fileType = $this->request->getData('file')['type'];
                     $fileExtTmp = explode(".", $fileName);
@@ -249,7 +250,7 @@ class AppController extends Controller
                     $strUnique = md5(date("Y-m-d-H-i-s") . '--' . microtime(true) . '--' . $fileName);
                     $uploadPath = '/var/www/DEV_JP/webroot/uploads/files/';
                     $uploadFile = $uploadPath . $strUnique . '.' . $fileExt;
-                    if(move_uploaded_file($this->request->getData('file')['tmp_name'], $uploadFile)) {
+                    if (move_uploaded_file($this->request->getData('file')['tmp_name'], $uploadFile)) {
                         $filesTbl = TableRegistry::get('Files');
                         $files = $filesTbl->newEntity();
                         $files->hash = $strUnique;
@@ -257,7 +258,7 @@ class AppController extends Controller
                         $files->type = $fileType;
                         $files->size = $this->request->getData('file')['size'];
                         $files->path = $uploadFile;
-                        if($filesTbl->save($files)) {
+                        if ($filesTbl->save($files)) {
                             $urlDownload = Router::url([
                                 'controller' => 'App',
                                 'action' => 'download',
@@ -279,7 +280,7 @@ class AppController extends Controller
                     throw new \Exception('File không tồn tại');
                 }
             }
-        } catch(\ErrorException $ex) {
+        } catch (\ErrorException $ex) {
             $result[] = 'Có lỗi xảy ra';
             return $this->response->withDisabledCache()->withType('application/json')->withStringBody($result);
         }
@@ -293,7 +294,7 @@ class AppController extends Controller
             'success' => '1'
         ];
         try {
-            if(empty($id)) {
+            if (empty($id)) {
                 return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
             }
             $conditions = [
@@ -307,10 +308,10 @@ class AppController extends Controller
                 'download' => true,
                 'name' => $fileInfo->name
             ));
-        } catch(RecordNotFoundException $ex) {
+        } catch (RecordNotFoundException $ex) {
             $result[] = 'Không tồn tại file';
             return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
-        } catch(Exception $ex) {
+        } catch (Exception $ex) {
             $result[] = 'Có lỗi xảy ra';
             return $this->response->withDisabledCache()->withType('application/json')->withStringBody(json_encode($result));
         }
@@ -328,24 +329,24 @@ class AppController extends Controller
             $tblRegistry = TableRegistry::get($table);
             $table = strtoupper($table);
 
-            if(!isset($options['type']) || empty($options['type'])) {
+            if (!isset($options['type']) || empty($options['type'])) {
                 $options['type'] = 'all';
             }
 
-            if(!isset($options['joins']) || empty($options['joins']) || !is_array($options['joins'])) {
+            if (!isset($options['joins']) || empty($options['joins']) || !is_array($options['joins'])) {
                 $options['joins'] = [];
             }
 
             $query = $tblRegistry->find($options['type'], $options['options'])->join($options['joins']);
-            if(isset($options['get_one']) && $options['get_one']) {
+            if (isset($options['get_one']) && $options['get_one']) {
                 $query = $query->first();
             }
 
-            if(isset($options['count']) && $options['count']) {
+            if (isset($options['count']) && $options['count']) {
                 $query = $query->count();
             }
 
-            if(isset($options['to_array']) && $options['to_array']) {
+            if (isset($options['to_array']) && $options['to_array']) {
                 $query = $query->toArray();
             }
 
@@ -354,13 +355,13 @@ class AppController extends Controller
                 'full_info' => $query,
                 'msg' => ''
             ];
-        } catch(RecordNotFoundException $ex) {
+        } catch (RecordNotFoundException $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'full_info' => '',
                 'msg' => __('MSG_IS_NOT_EXIST', __($table))
             ];
-        } catch(Exception $ex) {
+        } catch (Exception $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'full_info' => '',
@@ -382,18 +383,18 @@ class AppController extends Controller
             ];
             $tblRegistry = TableRegistry::get($table);
             $table = strtoupper($table);
-            if($primaryKey) {
+            if ($primaryKey) {
                 $tblInfo = $tblRegistry->get($primaryKey);
             } else {
                 $tblInfo = $tblRegistry->newEntity();
             }
 
-            if($autoSave || $this->request->is([
-                'post',
-                'put'
-            ])) {
+            if ($autoSave || $this->request->is([
+                    'post',
+                    'put'
+                ])) {
                 $tblInfo = $tblRegistry->patchEntity($tblInfo, $data);
-                if($tblRegistry->save($tblInfo)) {
+                if ($tblRegistry->save($tblInfo)) {
                     $id = $tblInfo->id;
                     $aryResult = [
                         'result_flag' => FLAG_TRUE,
@@ -410,7 +411,7 @@ class AppController extends Controller
                     ];
                 }
 
-                if($tblInfo->errors()) {
+                if ($tblInfo->errors()) {
                     $aryResult['result_flag'] = FLAG_INVALID;
                 }
             } else {
@@ -421,14 +422,14 @@ class AppController extends Controller
                     'msg' => ''
                 ];
             }
-        } catch(RecordNotFoundException $ex) {
+        } catch (RecordNotFoundException $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'id' => '',
                 'full_info' => '',
                 'msg' => __('MSG_IS_NOT_EXIST', __($table))
             ];
-        } catch(Exception $ex) {
+        } catch (Exception $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'id' => '',
@@ -449,10 +450,10 @@ class AppController extends Controller
             ];
             $tblRegistry = TableRegistry::get($table);
 
-            if($autoSave || $this->request->is([
-                'post',
-                'put'
-            ])) {
+            if ($autoSave || $this->request->is([
+                    'post',
+                    'put'
+                ])) {
                 $result = $tblRegistry->updateAll(
                     $data['fields'],
                     $data['conditions']
@@ -469,12 +470,12 @@ class AppController extends Controller
                     'msg' => ''
                 ];
             }
-        } catch(RecordNotFoundException $ex) {
+        } catch (RecordNotFoundException $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'msg' => __('MSG_IS_NOT_EXIST', __($table))
             ];
-        } catch(Exception $ex) {
+        } catch (Exception $ex) {
             $aryResult = [
                 'result_flag' => FLAG_FALSE,
                 'msg' => __('MSG_EXCEPTION', __($table))
@@ -484,13 +485,14 @@ class AppController extends Controller
         return $aryResult;
     }
 
-    public function getListCategory($displayFlag = '')
+    public function getListCategory($displayFlag = '', $menuTopFlag = false)
     {
         try {
             $data = [];
             $conditions = [
                 'fields' => [
                     'id',
+                    'parent_id',
                     'title_vi',
                     'title_jp',
                     'description_vi',
@@ -504,15 +506,13 @@ class AppController extends Controller
                 ]
             ];
 
-            if(!is_null($displayFlag) && '' !== $displayFlag) {
-                $conditions['conditions'] = [
-                    'display_flag' => $displayFlag
-                ];
+            if (!is_null($displayFlag) && '' !== $displayFlag) {
+                $conditions['conditions']['display_flag'] = $displayFlag;
             }
 
             $newsCategory = TableRegistry::get('NewsCategories');
             $data = $newsCategory->find('all', $conditions);
-        } catch(\ErrorException $ex) {
+        } catch (\ErrorException $ex) {
             $data = [];
         }
 
@@ -521,32 +521,48 @@ class AppController extends Controller
 
     public function getMenuCategory()
     {
-        /* if ($this->Session->check('categories')) {
+        if ($this->Session->check('categories')) {
             $this->set('categories', $this->Session->read('categories'));
             return;
-        } */
+        }
 
-        $aryField = [
-            'NewsCategories.id',
-            'NewsCategories.parent_id',
-            'title' => "NewsCategories.title_{$this->language}",
-        ];
-        $options = ['id' => [], 'not_in_id' => FLAG_FALSE, 'fields' => $aryField, 'limit' => LIMIT_CATEGORY_SHOW_MENU];
-
-        $tblRegistry = TableRegistry::get('NewsCategories');
-        $categories = $tblRegistry->getNewsCategoryCommon($options);
+        $categories = $this->getListCategory(1);
         $aryCategory = [];
+        $otherId = '99999999';
+        $index = 1;
         foreach ($categories as $key => $info) {
-            if (isset($aryCategory[$info->parent_id])) {
-                $aryCategory[$info->parent_id][$info->id] = ['id' => $info->id, 'title' => $info->title];
+            if ($index <= 5 || isset($aryCategory[$info->parent_id])) {
+                if (isset($aryCategory[$info->parent_id])) {
+                    $aryCategory[$info->parent_id]['children'][$info->id] = ['id' => $info->id, 'title' => $info->{'title_' . $this->language}];
+                } else {
+                    $index++;
+                    $aryCategory[$info->id] = ['id' => $info->id, 'title' => $info->{'title_' . $this->language}];
+                }
             } else {
-                $aryCategory[$info->id] = ['id' => $info->id, 'title' => $info->title];
+                $aryCategory[$otherId]['children'][$info->id] = ['id' => $info->id, 'title' => $info->{'title_' . $this->language}];
             }
         }
 
-        $this->Session->write('categories', $categories);
-        $this->set('categories', $categories);
+        if (isset($aryCategory[$otherId])) {
+            $aryCategory[$otherId]['id'] = '';
+            $aryCategory[$otherId]['title'] = __('MENU_OTHER');
+        }
 
+        $this->Session->write('categories', $aryCategory);
+        $this->set('categories', $aryCategory);
+
+    }
+
+    public function setMenubar($aryMenu = [])
+    {
+        $aryInfo = [];
+        if (isset($aryMenu) && is_array($aryMenu) && count($aryMenu)) {
+            foreach ($aryMenu as $info) {
+                $aryInfo[$info['id']] = $info['title'];
+            }
+        }
+
+        $this->set('menuPath', $aryInfo);
     }
 
     public function generateString($s_length = 8)
@@ -564,11 +580,11 @@ class AppController extends Controller
             while ($i < $s_length) {
                 $type = mt_rand(0, count($char_list) - 1);
                 $char = $char_list[$type][mt_rand(0, strlen($char_list[$type]) - 1)];
-                if ($char ==  $tmp) {
+                if ($char == $tmp) {
                     continue;
                 }
                 $tmp = $char;
-                $result.= $char;
+                $result .= $char;
                 $check_list[$type] = $check_list[$type] + 1;
                 $i++;
             }

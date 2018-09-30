@@ -12,29 +12,44 @@
 	/* ]]> */
 </script>
 <!-- ============================== contents Area ============================== -->
-
 <div class="py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>
-                    <?= @$newsResult[0]->category_title ?>
-                    <br>
-                </h1>
+                <h1 class=""><?= @$newsResult[0]->category_title ?></br></h1>
             </div>
         </div>
     </div>
 </div>
 <div class="py-0">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class=""><?= @$newsResult[0]->category_description ?></p>
+        <div class="row mb-5">
+            <?php
+            $column = 12;
+            $flagShowImage = false;
+             if(isset($newsResult[0]->image) && $newsResult[0]->image) {
+                $column = 7;
+                $flagShowImage = true;
+            }?>
+            <div class="col-md-<?= $column ?>">
+                <h2 class="text-primary">
+                    <?= $this->Html->link(@$newsResult[0]->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$newsResult[0]->id], ['class' => ''] ) ?>
+                    <br>
+                </h2>
+                <p class=""><?= mb_substr(strip_tags(@$newsResult[0]->body), 0, 100) ?></p>
             </div>
+            <?php if($flagShowImage) {?>
+            <div class="col-md-5 align-self-center">
+                <?= $this->Html->image(@$newsResult[0]->image, ["alt" => "", "class" => "img-fluid d-block w-100 img-thumbnail", 'style' => ""]) ?>
+            </div>
+            <?php }?>
         </div>
     </div>
 </div>
-<?php foreach ($newsResult as $key => $news):?>
+<?php
+unset($newsResult[0]);
+$newsResult = array_values($newsResult);
+foreach ($newsResult as $key => $news):?>
 <?php if(!($key % 4)) {?>
 <div class="py-2">
     <div class="container">
@@ -61,10 +76,10 @@
 </div>
 <?php } ?>
 <?php endforeach; ?>
-
+<!-- ============================== side Area ============================== -->
+<!--
 <div id="contents" class="cf">
 
-	<!-- ============================== side Area ============================== -->
 	<div id="sidebar">
 		<?= $this->Html->script('/asset/my_template/js/rollover.js') ?>
 		<div class="mt10 center">
@@ -75,7 +90,7 @@
 		<?= $this->element('News/_side_right_menu_other'); ?>
 		<div style="margin-top: 20px; text-align: center;"></div>
 	</div>
-	<!-- /div#sidebar -->
 </div>
+-->
 <!-- /contents -->
 <!-- ============================== /contents Area ============================== -->

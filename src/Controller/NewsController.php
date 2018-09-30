@@ -33,6 +33,15 @@ class NewsController extends AppController
         $tblRegistry = TableRegistry::get('News');
         $newsResult = $tblRegistry->getNewsCommon($options);
         $this->set('newsResult', $newsResult);
+        if (isset($newsResult[0])) {
+            $menuInfo = [
+                [
+                    'id' => $newsResult[0]->news_category_id,
+                    'title' => $newsResult[0]->category_title
+                ]
+            ];
+            $this->setMenubar($menuInfo);
+        }
     }
 
 
@@ -99,7 +108,7 @@ class NewsController extends AppController
                          //preg_match_all( '@src="([^"]+)"@' , $imageInfo, $images );
                          $aryImage[] = $images[1][0]; */
 
-                        preg_match_all('/(alt|title|src)=[\'"]([^\'"]+)[\'"].*>/i',$imageInfo, $images);
+                        preg_match_all('/(alt|title|src)=[\'"]([^\'"]+)[\'"].*>/i', $imageInfo, $images);
                         $image = array_fill_keys($images[1], $images[2][0]);
                         $aryImage[] = $image;
                     }

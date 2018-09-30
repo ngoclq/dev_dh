@@ -7,13 +7,32 @@ msgid "LOCALE"
 msgstr "vi_VN"
 
 msgid "WEBSITE_AUTHOR"
-msgstr "Ten cong ty"
+msgstr "DDH VietNam"
 
 msgid "WEBSITE_TITLE"
 msgstr "Gioi thieu site"
 
 msgid "WEBSITE_DESCRIPTION"
 msgstr "Mo ta noi dung cua site"
+
+msgid "COMPANY_NAME"
+msgstr "CÔNG TY CỔ PHẦN PHÁT TRIỂN NHÂN LỰC VÀ HỢP TÁC QUỐC TẾ DHH VIỆT NAM"
+
+msgid "COMPANY_DESCRIPTION_SUB"
+msgstr "Mô tả tóm tắt về công ty"
+
+msgid "COMPANY_ADDRESS"
+msgstr "Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
+
+msgid "COMPANY_MOBILE"
+msgstr "+84 - 987 178 988"
+
+msgid "COMPANY_EMAIL"
+msgstr "dhhvnjp@gmail.com"
+
+msgid "COMPANY_HOTLINE"
+msgstr "+84 - 987 178 988"
+
 
 
 /*==========================DATETIME AREA=================================*/
@@ -27,6 +46,24 @@ msgstr "yyyy-MM-dd HH:mm"
 msgid "TIMES_DAYS"
 msgstr "yyyy-MM-dd"
 
+msgid "LABEL_YEAR"
+msgstr "Năm"
+
+msgid "LABEL_MONTH"
+msgstr "Tháng"
+
+msgid "LABEL_DAY"
+msgstr "Ngày"
+
+msgid "LABEL_HOUR"
+msgstr "Giờ"
+
+msgid "LABEL_MINUTE"
+msgstr "Phút"
+
+msgid "LABEL_SECOND"
+msgstr "Giây"
+
 
 /*==========================LABEL COMMON AREA=================================*/
 
@@ -35,12 +72,6 @@ msgstr "ページの先頭に戻る"
 
 msgid "ANNOTATIONS_FOR_TOP_FLAG"
 msgstr "Ưu tiên hiển thị bài viết này"
-
-msgid "REGISTER"
-msgstr "会員登録"
-
-msgid "LOGIN"
-msgstr "ログイン"
 
 msgid "CREATE"
 msgstr "Tạo mới"
@@ -60,6 +91,12 @@ msgstr "Các chủ đề khác"
 msgid "CLICK_HERE"
 msgstr "vào đây"
 
+msgid "ACTIVE_DATE"
+msgstr "Ngày hiển thị bài viết"
+
+msgid "ANNOTATIONS_ACTIVE_DATE"
+msgstr "※Mặc định bài viết sẽ hiển thị ngay sau khi đăng ký"
+
 msgid "HOME_PAGE"
 msgstr "トップ"
 
@@ -76,13 +113,37 @@ msgid "HELP_PAGE"
 msgstr "ヘルプ"
 
 msgid "QA_PAGE"
-msgstr "Hỏi đáp"
+msgstr "Liên lạc"
+
+msgid "LABEL_LOGIN"
+msgstr "Đăng Nhập"
+
+msgid "LABEL_REGISTER"
+msgstr "Đăng ký"
+
+msgid "ANNOTATIONS_LOGIN"
+msgstr "Nhập email và mật khẩu của bạn để <strong>đăng nhập</strong>"
+
+msgid "ANNOTATIONS_REGISTER"
+msgstr "Nhập thông tin cá nhân của bạn để tạo <strong>tài khoản</strong>"
+
+msgid "LABEL_LOGIN_OTHER"
+msgstr "Đăng nhập với tài khoản "
+
+msgid "LABEL_REGISTER_OTHER"
+msgstr "Đăng ký với tài khoản "
 
 msgid "AUTO_LOGIN"
 msgstr "次回から自動的にログイン"
 
 msgid "REMINDER"
 msgstr "パスワードを忘れた方はこちら"
+
+msgid "LABEL_SHOW"
+msgstr "Hiển thị"
+
+msgid "LABEL_HIDE"
+msgstr "Ẩn"
 
 
 /*==========================MESSAGE COMMON AREA=================================*/
@@ -104,6 +165,30 @@ msgstr "Không tồn tại bài viết"
 
 msgid "MSG_BACK_TO_HOME"
 msgstr "Nhấp {0} để quay lại trang chủ"
+
+msgid "MSG_NOT_EMPTY"
+msgstr "Vui lòng nhập {0}!"
+
+msgid "MSG_EMAIL_INVALID"
+msgstr "Email không hợp lệ!"
+
+msgid "MSG_EMAIL_EXIST"
+msgstr "Email đã tồn tại!"
+
+msgid "MSG_PASSWORD_NOT_MATCH"
+msgstr "Xác nhận mật khẩu không đúng!"
+
+msgid "MSG_MIN_LENGTH"
+msgstr "{0} cần nhập ít nhất {1} ký tự!"
+
+msgid "MSG_MAX_LENGTH"
+msgstr "{0} không nhập nhiều hơn {1} ký tự!"
+
+msgid "MSG_LOGIN_ERROR"
+msgstr "{0} hoặc {1} không chính xác"
+
+msgid "MSG_REGISTER_ERROR"
+msgstr "Thông tin đăng ký không chính xác! Vui lòng nhập lại"
 
 
 /*==========================BUTTON COMMON AREA=================================*/
@@ -138,11 +223,23 @@ msgstr "返信"
 msgid "BTN_FORWARD"
 msgstr "転送"
 
+msgid "BTN_DRAFT"
+msgstr "Lưu nháp"
+
 msgid "BTN_SHOW"
 msgstr "Hiển thị"
 
 msgid "BTN_HIDDEN"
 msgstr "Ẩn"
+
+msgid "BTN_LOGIN"
+msgstr "Đăng nhập"
+
+msgid "BTN_REGISTER"
+msgstr "Đăng ký"
+
+msgid "BTN_DETAIL"
+msgstr "Chi tiết"
 
 
 /*==========================SUMMARY ARTICLES/NEWS AREA=================================*/
@@ -226,19 +323,19 @@ msgstr "Số di động"
 /*==========================SITE INFO AREA=================================*/
 
 msgid "INFO"
-msgstr "Quản lý thông tin web site"
+msgstr "JP - Quản lý thông tin web site"
 
 msgid "ABOUT"
-msgstr "Giới Thiệu"
+msgstr "JP - Giới Thiệu"
 
 msgid "VISION"
-msgstr "Tầm nhìn sứ mệnh"
+msgstr "JP - Tầm nhìn sứ mệnh"
 
 msgid "PRIVACY"
-msgstr "Nguyên tắc hoạt động"
+msgstr "JP - Nguyên tắc hoạt động"
 
 msgid "GROUP"
-msgstr "Đội ngũ nhân sự"
+msgstr "JP - Đội ngũ nhân sự"
 
 
 /*==========================NEWS AREA=================================*/
@@ -267,6 +364,7 @@ msgstr "Chủ đề"
 msgid "NEWSHITORIES"
 msgstr "Lịch sử"
 
+
 /*==========================ARTICLE AREA=================================*/
 
 msgid "ARTICLES"
@@ -286,4 +384,67 @@ msgstr "Chủ đề"
 
 msgid "ARTICLESHITORIES"
 msgstr "Lịch sử"
+
+
+/*==========================CONTACTS AREA=================================*/
+
+msgid "LABEL_CONTACTS"
+msgstr "Liên hệ"
+
+msgid "LABEL_TITLE"
+msgstr "Chủ đề"
+
+msgid "LABEL_PHONE_NUMBER"
+msgstr "Số điện thoại"
+
+msgid "LABEL_CONTENTS"
+msgstr "Nội dung phản hồi"
+
+msgid "MSG_CONTACT_SEND_SUCCESS"
+msgstr "Liên lạc của bạn đã được gửi tới Quản trị viên.<br/> Quản trị viên sẽ trả lời bạn thông qua mail đã đăng ký!"
+
+msgid "MSG_CONTACT_SEND_ERROR"
+msgstr "Liên lạc của bạn chưa được gửi đi. Vui lòng thử lại!"
+
+msgid "MSG_CONTACT_NOT_FOUND"
+msgstr "Rất tiếc, Chúng tôi không tìm thấy nội dung liên lạc của bạn!"
+
+msgid "MSG_CONTACT_SEND_INVALID"
+msgstr "Thông tin bạn nhập không đúng. Vui lòng nhập lại!"
+
+
+/*==========================OTHER AREA=================================*/
+msgid "LABEL_NEWS_TOP"
+msgstr "Bài viết nổi bật"
+
+
+/*==========================FORMAT AREA=================================*/
+
+msgid "FORMAT_FIRST_NAME"
+msgstr "{0} {1}"
+
+
+/*==========================ADMIN AREA=================================*/
+
+msgid "LABEL_CONTACT"
+msgstr "Liên hệ"
+
+msgid "LABEL_SHOW_ALL_CONTACT"
+msgstr "Hiển thị tất cả tin nhắn"
+
+msgid "NEWS_ADD"
+msgstr "Đăng bài"
+
+msgid "NEWS_LIST"
+msgstr "Danh sách bài viết"
+
+msgid "NEWS_CATEGORY"
+msgstr "Danh mục bài viết"
+
+msgid "NEW_CONTACT_NOTICLES"
+msgstr "{0} gửi cho bạn 1 tin nhắn"
+
+
+
+
 

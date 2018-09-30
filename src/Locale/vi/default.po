@@ -18,17 +18,20 @@ msgstr "Mo ta noi dung cua site"
 msgid "COMPANY_NAME"
 msgstr "CÔNG TY CỔ PHẦN PHÁT TRIỂN NHÂN LỰC VÀ HỢP TÁC QUỐC TẾ DHH VIỆT NAM"
 
+msgid "COMPANY_DESCRIPTION_SUB"
+msgstr "Mô tả tóm tắt về công ty"
+
 msgid "COMPANY_ADDRESS"
-msgstr "Địa chỉ: Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
+msgstr "Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
 
 msgid "COMPANY_MOBILE"
-msgstr "Điện thoại :  0987 178 988"
+msgstr "+84 - 987 178 988"
 
 msgid "COMPANY_EMAIL"
-msgstr "Email: dhhvnjp@gmail.com"
+msgstr "dhhvnjp@gmail.com"
 
 msgid "COMPANY_HOTLINE"
-msgstr "Hotline: 0987 178 988"
+msgstr "+84 - 987 178 988"
 
 
 
@@ -141,8 +144,6 @@ msgstr "Hiển thị"
 
 msgid "LABEL_HIDE"
 msgstr "Ẩn"
-
-
 
 
 /*==========================MESSAGE COMMON AREA=================================*/
@@ -387,6 +388,9 @@ msgstr "Lịch sử"
 
 /*==========================CONTACTS AREA=================================*/
 
+msgid "LABEL_CONTACTS"
+msgstr "Liên hệ"
+
 msgid "LABEL_TITLE"
 msgstr "Chủ đề"
 
@@ -407,6 +411,11 @@ msgstr "Rất tiếc, Chúng tôi không tìm thấy nội dung liên lạc củ
 
 msgid "MSG_CONTACT_SEND_INVALID"
 msgstr "Thông tin bạn nhập không đúng. Vui lòng nhập lại!"
+
+
+/*==========================OTHER AREA=================================*/
+msgid "LABEL_NEWS_TOP"
+msgstr "Bài viết nổi bật"
 
 
 /*==========================FORMAT AREA=================================*/
