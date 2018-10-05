@@ -4164,7 +4164,8 @@ button.bg-warning:focus {
   background-color: #d39e00 !important; }
 
 .bg-danger {
-  background-color: #dc3545 !important; }
+    /*background-color: #dc3545 !important;*/
+    background-color: #1c0cdc !important; }
 
 a.bg-danger:hover, a.bg-danger:focus,
 button.bg-danger:hover,
@@ -6174,3 +6175,59 @@ html, body {
     height: 100%;
     content: ' ';
     background: linear-gradient(white, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); }
+
+ul.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.navbar-nav li {
+    float: none;
+    list-style-type: disclosure-closed;
+    text-align: left;
+}
+
+ul.navbar-nav li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.navbar-nav li a:hover, .dropdown:hover .dropbtn {
+    background-color: #518eff;
+}
+
+ul.navbar-nav .dropdown {
+    display: inline-block;
+}
+
+ul.navbar-nav .dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #518eff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+ul.navbar-nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+ul.navbar-nav .dropdown-content a:hover {background-color: #9dd2f1
+}
+
+ul.navbar-nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+/*.form_login {
+    display: block;
+}*/

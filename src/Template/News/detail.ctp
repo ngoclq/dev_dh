@@ -26,7 +26,7 @@
 
 <!-- ============================== contents Area ============================== -->
 
-<div class="py-3">
+<div class="py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<div class="py-1">
+<div class="py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -49,17 +49,13 @@
         </div>
     </div>
 </div>
-<div class="py-1">
+<div class="py-2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <p class="lead"><?= __('NEWS_RELATED') ?></p>
             </div>
         </div>
-    </div>
-</div>
-<div class="py-1">
-    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <ul class="box-newslist box-news-related">

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-md navbar-dark bg-danger">
     <div class="container">
         <?= $this->Html->link(
@@ -10,31 +11,38 @@
         </button>
         <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
             <ul class="navbar-nav">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn dropdown-toggle"><?= __('ABOUT')?></a>
+                    <ul class="dropdown-content">
+                        <li class="nav-item"><?= $this->Html->link(__('ABOUT'), [ 'controller' => 'Infos', 'action' => 'about', '_method' => 'GET'], ['class' => 'nav-link']) ?></li>
+                        <li class="nav-item"><?= $this->Html->link(__('VISION'), [ 'controller' => 'Infos', 'action' => 'vision', '_method' => 'GET'], ['class' => 'nav-link']) ?></li>
+                        <li class="nav-item"><?= $this->Html->link(__('PRIVACY'), [ 'controller' => 'Infos', 'action' => 'privacy', '_method' => 'GET'], ['class' => 'nav-link']) ?></li>
+                        <li class="nav-item"><?= $this->Html->link(__('GROUP'), [ 'controller' => 'Infos', 'action' => 'groups', '_method' => 'GET'], ['class' => 'nav-link']) ?></li>
+                    </ul>
+                </li>
                 <?php $maxShow = 5;?>
             <?php foreach($categories as $cateId => $aryNews): ?>
                 <?php if(isset($aryNews['children']) ) {?>
-                <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $aryNews['title']?>
-                        <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn dropdown-toggle"><?= $aryNews['title']?></a>
+                    <ul class="dropdown-content">
                     <?php foreach($aryNews['children'] as $cateId => $info):?>
                     <li class="nav-item">
-                        <?= $this->Html->link($info['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $info['id']],['tabindex' => '-1']) ?>
+                        <?= $this->Html->link($info['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $info['id']],['tabindex' => '-1'], ['class' => 'nav-link']) ?>
                     </li>
                     <?php endforeach; ?>
                     </ul>
                 </li>
                 <?php } else { ?>
                     <li class="nav-item">
-                        <?= $this->Html->link($aryNews['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $aryNews['id']]) ?>
+                        <?= $this->Html->link($aryNews['title'], [ 'controller' => 'News', 'action' => 'index', '_method' => 'GET', $aryNews['id']], ['class' => 'nav-link']) ?>
                     </li>
                 <?php } ?>
             <?php endforeach; ?>
             </ul>
-            <a class="btn navbar-btn ml-2 btn-warning text-dark">
-                <i class="fa d-inline fa-lg fa-user-circle-o"></i> Sign in
-            </a>
+            <!--<a class="btn navbar-btn ml-2 btn-warning text-dark btn_login">
+                <i class="fa d-inline fa-lg fa-user-circle-o"></i>
+            </a>-->
         </div>
     </div>
 </nav>

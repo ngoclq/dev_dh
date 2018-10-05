@@ -18,11 +18,13 @@ class InfosController extends AppController
     public function index($id = null)
     {
         $tblRegistry = TableRegistry::get('CompaniesInfos');
-        $tblRegistry->find();
 
         $info = $tblRegistry->find('all', [
             'conditions' => [
                 'id' => $id
+            ],
+            'fields' => [
+                'body' => "body_{$this->language}",
             ],
         ])->first();
         $this->set('info', $info);
@@ -37,6 +39,9 @@ class InfosController extends AppController
             'conditions' => [
                 'id' => 1
             ],
+            'fields' => [
+                'body' => "body_{$this->language}",
+            ],
         ])->first();
         $this->set('info', $info);
     }
@@ -44,11 +49,13 @@ class InfosController extends AppController
     public function vision()
     {
         $tblRegistry = TableRegistry::get('CompaniesInfos');
-        $tblRegistry->find();
 
         $info = $tblRegistry->find('all', [
             'conditions' => [
                 'id' => 2
+            ],
+            'fields' => [
+                'body' => "body_{$this->language}",
             ],
         ])->first();
         $this->set('info', $info);
@@ -57,11 +64,13 @@ class InfosController extends AppController
     public function privacy()
     {
         $tblRegistry = TableRegistry::get('CompaniesInfos');
-        $tblRegistry->find();
 
         $info = $tblRegistry->find('all', [
             'conditions' => [
                 'id' => 3
+            ],
+            'fields' => [
+                'body' => "body_{$this->language}",
             ],
         ])->first();
         $this->set('info', $info);
@@ -75,6 +84,9 @@ class InfosController extends AppController
         $info = $tblRegistry->find('all', [
             'conditions' => [
                 'id' => 4
+            ],
+            'fields' => [
+                'body' => "body_{$this->language}",
             ],
         ])->first();
         $this->set('info', $info);

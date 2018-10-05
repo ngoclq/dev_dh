@@ -1,4 +1,4 @@
-<?= $this->element('header'); ?>
+<?= $this->element('ping_header'); ?>
 <!-- ============================== contents Area ============================== -->
 <div id="contents" class="cf">
 	<div id="main">
@@ -21,4 +21,4 @@
 </div>
 <!-- /contents -->
 
-<?= $this->element('footer'); ?>
+<?= $this->element('ping_footer'); ?>
