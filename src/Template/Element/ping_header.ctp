@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-danger">
     <div class="container">
         <?= $this->Html->link(
-            $this->Html->image('/asset/default_template/img/logo.png', ["alt" => "__('HOME_PAGE')"]),
+            $this->Html->image('/asset/default_template/img/logo.png', ["alt" => __('HOME_PAGE')]),
             ['controller' => 'Homes', 'action' => 'home', '_method' => 'GET'],
             ['escape' => false, 'class' => 'navbar-brand']
         );?>

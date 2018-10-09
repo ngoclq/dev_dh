@@ -23,7 +23,11 @@
         '/asset/theme_ping/theme.css',
     ]) ?>
     <?= $this->fetch('css') ?>
-    <?= $this->Html->script(['/asset/default_template/js/jquery.min.js','/js/common.js']) ?>
+    <?= $this->Html->script(['/asset/default_template/js/jquery.min.js',
+    '/js/common.js',
+    '/js/bootstrap.min.js'
+    ]
+    ) ?>
     <?= $this->Html->script('ckeditor/ckeditor.js') ?>
     <?= $this->fetch('script') ?>
 
