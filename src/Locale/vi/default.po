@@ -25,13 +25,13 @@ msgid "COMPANY_ADDRESS"
 msgstr "Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
 
 msgid "COMPANY_MOBILE"
-msgstr "0969 114433"
+msgstr "+84 - 987 178 988"
 
 msgid "COMPANY_EMAIL"
 msgstr "dhhvnjp@gmail.com"
 
 msgid "COMPANY_HOTLINE"
-msgstr "0969 114433"
+msgstr "+84 - 987 178 988"
 
 
 
@@ -86,7 +86,7 @@ msgid "VIEW_MORE"
 msgstr "Xem thêm"
 
 msgid "MENU_OTHER"
-msgstr "Dịch vụ khác"
+msgstr "Các chủ đề khác"
 
 msgid "CLICK_HERE"
 msgstr "vào đây"

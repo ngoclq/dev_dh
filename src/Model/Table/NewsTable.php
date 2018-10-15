@@ -21,22 +21,22 @@ class NewsTable extends TableCommon
     public function validationDefault(Validator $validator)
     {
         $validator->notEmpty('news_category_id')->alphaNumeric('news_category_id')->requirePresence('news_category_id')->notEmpty('title_vi')->requirePresence('title_vi')->notEmpty('title_jp')->requirePresence('title_jp')->notEmpty('body_vi')->requirePresence('body_vi')->notEmpty('body_jp')->requirePresence('body_jp');
-        
+
         return $validator;
     }
 
     public function beforeSave(Event $event, EntityInterface $entity, ArrayObject $options)
     {
         parent::beforeSave($event, $entity, $options);
-        
+
         if(empty($entity->top_flag)) {
             $entity->top_flag = FLAG_FALSE;
         }
-        
+
         if(!empty($entity->top_flag) && empty($entity->order_number)) {
             $entity->order_number = $this->getMaxOrderNumber();
         }
-        
+
         return true;
     }
 
@@ -65,7 +65,7 @@ class NewsTable extends TableCommon
                     '`News`.`news_category_id`' => $aryCategoryId
                 ];
             }
-            
+
             $newsResult = $this->find('all', $condition)->join([
                 'NewsCategories' => [
                     'table' => 'news_categories',
@@ -73,7 +73,7 @@ class NewsTable extends TableCommon
                     'conditions' => '`NewsCategories`.`id` = `News`.`news_category_id`'
                 ]
             ])->toArray();
-            
+
             $aryTotal = [
                 '0' => FLAG_FALSE,
                 '1' => FLAG_FALSE
@@ -118,7 +118,7 @@ class NewsTable extends TableCommon
                 ],
                 'group' => '`News`.`news_category_id`, `NewsHistories`.`user_flag`'
             ];
-            
+
             if(is_array($aryCategoryId) && count($aryCategoryId)) {
                 $condition['conditions'] = [
                     '`News`.`news_category_id` IN ' => $aryCategoryId
@@ -128,7 +128,7 @@ class NewsTable extends TableCommon
                     '`News`.`news_category_id`' => $aryCategoryId
                 ];
             }
-            
+
             $newsHistoryResult = $this->find('all', $condition)->join([
                 'NewsCategories' => [
                     'table' => 'news_categories',
@@ -141,7 +141,7 @@ class NewsTable extends TableCommon
                     'conditions' => '`News`.`id` = `NewsHistories`.`news_id`'
                 ]
             ])->toArray();
-            
+
             $aryTotal = [
                 '0' => FLAG_FALSE,
                 '1' => FLAG_FALSE
@@ -186,13 +186,13 @@ class NewsTable extends TableCommon
                 'order_number' => 'MAX(News.order_number) + 1 '
             ]
         ]);
-        
+
         if($orderNumber->first()->order_number) {
             $maxOrderNumber = $orderNumber->first()->order_number;
         } else {
             $maxOrderNumber = 1;
         }
-        
+
         return $maxOrderNumber;
     }
 
@@ -224,11 +224,15 @@ class NewsTable extends TableCommon
 
         $condition['conditions'] = [
             '`News`.`date_active` <= ' => date('y-m-d H:i:s'),
-            '`News`.`display_flag`' => FLAG_TRUE,
+            '`News`.`delete_flag`' => FLAG_FALSE,
             '`NewsCategories`.`delete_flag`' => FLAG_FALSE,
             '`NewsCategories`.`display_flag`' => FLAG_TRUE
         ];
-        
+
+        if(!isset($options['is_admin']) || !$options['is_admin']) {
+            $condition['conditions']['`News`.`display_flag`'] = FLAG_TRUE;
+        }
+
         if(isset($options['not_in_id']) && $options['not_in_id']) {
             if(isset($options['id']) && is_array($options['id']) && count($options['id'])) {
                 $condition['conditions'][ '`News`.`id` NOT IN '] = $options['id'];
@@ -243,7 +247,7 @@ class NewsTable extends TableCommon
                 $conditionOptions['get_one'] = FLAG_TRUE;
             }
         }
-        
+
         if(isset($options['category_id']) && is_array($options['category_id']) && count($options['category_id'])) {
             $condition['conditions']['`News`.`news_category_id` IN '] = $options['category_id'];
         } elseif(isset($options['category_id']) && !empty($options['category_id'])) {
@@ -276,15 +280,15 @@ class NewsTable extends TableCommon
                 'conditions' => '`NewsCategories`.`id` = `News`.`news_category_id`'
             ]
         ];
-        
+
         $conditionOptions['type'] = 'all';
         $conditionOptions['options'] = $condition;
         $conditionOptions['joins'] = $joins;
         $conditionOptions['to_array'] = FLAG_TRUE;
-        
+
         return $this->commonFind('News', $conditionOptions);
     }
-    
+
     public function getTopView($options = ['past_days' => 7, 'category_id' => []])
     {
         $conditionOptions = [];
@@ -300,19 +304,20 @@ class NewsTable extends TableCommon
             'conditions' => [
                 '`News`.`date_active` <= ' => date('y-m-d H:i:s'),
                 '`News`.`display_flag`' => FLAG_TRUE,
+                '`News`.`delete_flag`' => FLAG_FALSE,
                 '`NewsCategories`.`delete_flag`' => FLAG_FALSE,
                 '`NewsCategories`.`display_flag`' => FLAG_TRUE
             ],
             'group' => ['`News`.`id`'],
             'order' => ['`News`.`top_flag` DESC', 'total DESC']
         ];
-        
+
         if(isset($options['category_id']) && is_array($options['category_id']) && count($options['category_id'])) {
             $condition['conditions']['`News`.`news_category_id` IN '] = $options['category_id'];
         } elseif(isset($options['category_id']) && !empty($options['category_id'])) {
             $condition['conditions']['`News`.`news_category_id`'] = $options['category_id'];
         }
-        
+
         if (isset($options['past_days']) && $options['past_days']) {
             $date = date('Y-m-d');
             $pastDays = strtotime('-' . $options['past_days'] . ' days', strtotime ($date)) ;
@@ -320,7 +325,7 @@ class NewsTable extends TableCommon
             $condition['conditions'][] = ['`NewsHistories`.`created` >= ' => $pastDays];
             $condition['conditions'][] = ['`NewsHistories`.`created` < ' => $date];
         }
-        
+
         $joins = [
             'NewsCategories' => [
                 'table' => 'news_categories',
@@ -333,7 +338,7 @@ class NewsTable extends TableCommon
                 'conditions' => '`NewsHistories`.`news_id` = `News`.`id`'
             ]
         ];
-        
+
         $conditionOptions['type'] = 'all';
         $conditionOptions['options'] = $condition;
         $conditionOptions['joins'] = $joins;
@@ -354,8 +359,6 @@ from
   order by tbl.`news_category_id`, tbl.`date_active` desc
 ) as x 
 where x.row_number <= 20";
-        
-        
     }
 
 

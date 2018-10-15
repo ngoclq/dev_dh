@@ -1,6 +1,6 @@
 <script type="text/javascript" language="javascript">
 	/* <![CDATA[ */
-	var _action_news_category = "<?= $this->Url->build([ 'controller' => 'NewsCategory', 'action' => 'actionAjax', '_method' => 'GET', 'plugin' => 'AdminManager']); ?>";
+	var _action_news_handler = "<?= $this->Url->build([ 'controller' => 'News', 'action' => 'actionAjax', '_method' => 'GET', 'plugin' => 'AdminManager']); ?>";
 	/* ]]> */
 </script>
 <?php $this->assign('script', $this->Html->script(['AdminManager.articlesCategory.js'])); ?>
@@ -24,7 +24,7 @@
 				<div class="col-sm-3 col-xs-6 filter-result-info">
 					<span> Showing {{filteredStores.length}}/{{stores.length}}
 						entries </span>
-					<span><?= $this->Html->link(__('ADD'), [ 'controller' => 'NewsCategory', 'action' => 'form', '_method' => 'GET', 'plugin' => 'AdminManager']) ?> </span>
+					<span><?= $this->Html->link(__('ADD'), [ 'controller' => 'News', 'action' => 'form', '_method' => 'GET', 'plugin' => 'AdminManager']) ?> </span>
 				</div>
 			</div>
 		</div>
@@ -35,10 +35,10 @@
 					<th class="th col-sm-1"><div class="th">
 							<?= __('ID') ?>
 						</div></th>
-					<th class="th col-sm-4"><div class="th">
+					<th class="th col-sm-3"><div class="th">
 							<?= __('TITLE') . ' (' . __('VIETNAMESE') . ')' ?>
 						</div></th>
-					<th class="th col-sm-4"><div class="th">
+					<th class="th col-sm-3"><div class="th">
 							<?= __('TITLE') . ' (' . __('JAPANESE') . ')' ?>
 						</div></th>
 					<th class="th col-sm-2"><div class="th">
@@ -48,7 +48,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($newsResult as $news):?>
+				<?php foreach ($newsResult as $news):
+					$styleForHide = 'items-id-' . $news->id;
+					$styleForShow = 'items-id-' . $news->id;
+					if ($news->display_flag) {
+						$styleForShow .= ' items_hiden';
+					} else {
+						$styleForHide .= ' items_hiden';
+					}
+				?>
 				<tr id="id-<?= $news->id ?>">
 					<td >
 						<?= $news->id ?>
@@ -68,6 +76,11 @@
 								['controller' => 'News', 'action' => 'form', '_method' => 'GET', $news->id],
 								['escape' => false, 'class' => ['btnAction btn btn-w-xs btn-primary']]
 							) ?>
+
+						<?= $this->Form->button(__('BTN_HIDDEN'), ['type'=>'button', 'class' => ['btnAction btn btn-w-xs btn-warning', $styleForHide], 'rel' => '_action_news_handler', '_handle' => 'hide', 'val' => $news->id ] ) ?>
+						<?= $this->Form->button(__('BTN_SHOW'), ['type'=>'button', 'class' => ['btnAction btn btn-w-xs btn-primary', $styleForShow], 'rel' => '_action_news_handler', '_handle' => 'show', 'val' => $news->id ] ) ?>
+						<?= $this->Form->button(__('BTN_DELETE'), ['type'=>'button', 'class' => ['btnAction btn btn-w-xs btn-danger'], 'rel' => '_action_news_handler', '_handle' => 'del', 'val' => $news->id ] ) ?>
+
 					</td>
 				</tr>
 				<?php endforeach; ?>

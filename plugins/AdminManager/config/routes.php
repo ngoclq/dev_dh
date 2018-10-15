@@ -94,6 +94,11 @@ Router::plugin('AdminManager', [
         'controller' => 'NewsCategory',
         'action' => 'index'
     ]);
+    // Delete/Show/Hide category
+    $routes->connect('/news/actionAjax', [
+        'controller' => 'News',
+        'action' => 'actionAjax'
+    ]);
     /* End News Area */
 
     /* Start Site Info Area */

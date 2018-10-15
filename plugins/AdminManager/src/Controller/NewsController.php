@@ -33,14 +33,16 @@ class NewsController extends AdminController
             'News.news_category_id',
             "News.title_vi",
             "News.title_jp",
+            'News.display_flag',
             'News.created'
-                    ];
+        ];
         $options = ['category_id' => [], 'not_in_id' => FLAG_FALSE, 'fields' => $aryField];
         if (!is_null($id) && '' !== $id) {
             $options['category_id'] = [$id];
         }
-        $options['limit'] = $limit;
+        $options['limit'] = 100;
         $options['offset'] = $offset;
+        $options['is_admin'] = FLAG_TRUE;
         $tblRegistry = TableRegistry::get('News');
         $newsResult = $tblRegistry->getNewsCommon($options);
         $this->set('newsResult', $newsResult);
@@ -92,4 +94,44 @@ class NewsController extends AdminController
 
         return $data;
     }
+
+    public function actionAjax()
+    {
+
+        if ($this->request->is(['ajax']) && $this->request->isPost()) {
+            $this->autoRender = false;
+            $this->viewBuilder()->setLayout(false);
+
+            $id = $this->request->getData('id');
+            $handle = $this->request->getData('handle');
+
+            $resultJ = json_encode(['result' => '1', 'handle' => $handle, 'id' => $id, 'message' => '']);
+            try {
+                $news = TableRegistry::get('News');
+                $category = $news->get($id);
+
+                if ('hide' == $handle) {
+                    $category->display_flag = '0';
+                } elseif ('show' == $handle) {
+                    $category->display_flag = '1';
+                } elseif ('del' == $handle) {
+                    $category->delete_flag = '1';
+                }
+
+                if ($news->save($category)) {
+                    $resultJ = json_encode(['result' => '1', 'handle' => $handle, 'id' => $id, 'message' => __('Your article has been updated.')]);
+                } else {
+                    $resultJ = json_encode(['result' => '0', 'handle' => $handle, 'id' => $id, 'message' => __('Unable to update your article.')]);
+                }
+
+            } catch (RecordNotFoundException $ex) {
+                $resultJ = json_encode(['result' => '0', 'handle' => $handle, 'id' => $id, 'message' => __('Khong ton tai record')]);
+            } catch (Exception $ex) {
+                $resultJ = json_encode(['result' => '0', 'handle' => $handle, 'id' => $id, 'message' => __('Khong ton tai record')]);
+            }
+
+            return $this->response->withDisabledCache()->withType('application/json')->withStringBody($resultJ);
+        }
+    }
+
 }
