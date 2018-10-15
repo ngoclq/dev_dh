@@ -38,6 +38,7 @@ class HomesController extends AppController
         $aryNews = [];
         $tblNewsCateRegistry = TableRegistry::get('NewsCategories');
         $newsCateResult = $tblNewsCateRegistry->getNewsCategoryCommon();
+
         if (is_array($newsCateResult)) {
             foreach ($newsCateResult as $key => $newsCate) {
                 $aryField = [
@@ -47,7 +48,7 @@ class HomesController extends AppController
                     'body' => "News.body_{$this->language}",
                 ];
                 $options = [
-                    'conditions' => ['top_flag' => FLAG_TRUE],
+                    //'conditions' => ['top_flag' => FLAG_TRUE],
                     'category_id' => [$newsCate['id']],
                     'not_in_id' => FLAG_FALSE,
                     'fields' => $aryField,
