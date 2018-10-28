@@ -9,6 +9,15 @@ Router::plugin('AdminManager', [
         'controller' => 'Home',
         'action' => 'home'
     ]);
+    $routes->connect('/login', [
+        'controller' => 'Home',
+        'action' => 'login'
+    ]);
+
+    $routes->connect('/logout', [
+        'controller' => 'Home',
+        'action' => 'logout'
+    ]);
 
     // Article top
     $routes->get('/articles/', [

@@ -58,9 +58,31 @@ class AdminController extends AppController
     {
         parent::beforeFilter($event);
         //$this->Security->setConfig('blackHoleCallback', 'blackhole');
+
+        $allows = [
+            'login',
+            'logout',
+        ];
+
+        $allow = false;
+        foreach ($allows as $action) {
+            if (strtolower($this->request->action) == $action) {
+                $allow = true;
+                break;
+            }
+        }
+
+        if (!$allow && empty($this->Auth->user()) || !$allow && $this->Auth->user()['role'] != SYSTEM_USER) {
+            return $this->redirect([
+                'controller' => 'Home',
+                'action' => 'login',
+                '_method' => 'GET',
+                'plugin' => 'AdminManager'
+            ]);
+        }
         return null;
     }
-    
+
     public function blackhole($type)
     {
         error_log(print_r("Runninggggggggggg", true), 3, '/var/www/DEV_JP/logs/debug123.txt');
@@ -84,10 +106,10 @@ class AdminController extends AppController
             $this->set('_serialize', true);
         }
     }
-    
+
     private function getListContact()
     {
-        
+
         $options = [];
         $options['fields'] = [
             'Contacts.id',
@@ -100,7 +122,7 @@ class AdminController extends AppController
         $options['limit'] = 3;
         $result = $this->commonFind('Contacts', ['options' => $options]);
         $this->set('new_contact_header', $result['full_info']);
-        
+
         unset($options['limit']);
         $resultCount = $this->commonFind('Contacts', ['options' => $options, 'count' => FLAG_TRUE]);
         $this->set('new_contact_unread', $resultCount['full_info']);

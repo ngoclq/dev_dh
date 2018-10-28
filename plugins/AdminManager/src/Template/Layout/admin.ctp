@@ -25,8 +25,7 @@
 <?= $this->fetch('script') ?>
 
 </head>
-<body data-ng-app="app" id="app" data-custom-background
-	data-off-canvas-nav>
+<body data-ng-app="app" id="app" data-custom-background data-off-canvas-nav>
 	<div data-ng-controller="AppCtrl">
 		<div data-ng-hide="isSpecificPage()" data-ng-cloak class="no-print">
 			<section id="header" class="top-header">

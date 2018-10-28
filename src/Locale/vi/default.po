@@ -21,17 +21,40 @@ msgstr "CÔNG TY CỔ PHẦN PHÁT TRIỂN NHÂN LỰC VÀ HỢP TÁC QUỐC T�
 msgid "COMPANY_DESCRIPTION_SUB"
 msgstr "Mô tả tóm tắt về công ty"
 
+msgid "LABEL_ADDRESS"
+msgstr "Địa chỉ: "
 msgid "COMPANY_ADDRESS"
-msgstr "Số 38 đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
+msgstr "Số 38 khu đường mới, Hậu Dưỡng Kim Chung, Đông Anh, Hà Nội"
+
+msgid "LABEL_MOBILE"
+msgstr "Hot line: "
 
 msgid "COMPANY_MOBILE"
-msgstr "+84 - 987 178 988"
-
-msgid "COMPANY_EMAIL"
-msgstr "dhhvnjp@gmail.com"
+msgstr "0969.114.433"
 
 msgid "COMPANY_HOTLINE"
-msgstr "+84 - 987 178 988"
+msgstr "0969.114.433"
+
+msgid "LABEL_EMAIL"
+msgstr "Email: "
+
+msgid "COMPANY_EMAIL"
+msgstr "dhhvn.jsc@gmail.com"
+
+msgid "LABEL_SITE"
+msgstr "Website: "
+
+msgid "SITE_DOMAIN"
+msgstr "http://dhhvn.com"
+
+msgid "LABEL_TAX_CODE"
+msgstr "MST: "
+
+msgid "TAX_CODE"
+msgstr "0108077008"
+
+msgid "LABEL_RESERVED"
+msgstr "Bản quyền thuộc vể "
 
 
 
