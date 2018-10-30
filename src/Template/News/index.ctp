@@ -12,70 +12,164 @@
 	/* ]]> */
 </script>
 <!-- ============================== contents Area ============================== -->
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class=""><?= @$newsResult[0]->category_title ?></br></h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="py-0">
-    <div class="container">
-        <div class="row mb-5">
-            <?php
-            $column = 12;
-            $flagShowImage = false;
-             if(isset($newsResult[0]->image) && $newsResult[0]->image) {
-                $column = 7;
-                $flagShowImage = true;
-            }?>
-            <div class="col-md-<?= $column ?>">
-                <h2 class="text-primary">
-                    <?= $this->Html->link(@$newsResult[0]->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$newsResult[0]->id], ['class' => ''] ) ?>
-                    <br>
-                </h2>
-                <p class=""><?= mb_substr(strip_tags(@$newsResult[0]->body), 0, 100) ?></p>
-            </div>
-            <?php if($flagShowImage) {?>
-            <div class="col-md-5 align-self-center">
-                <?= $this->Html->image(@$newsResult[0]->image, ["alt" => "", "class" => "img-fluid d-block w-100 img-thumbnail", 'style' => ""]) ?>
-            </div>
-            <?php }?>
-        </div>
-    </div>
-</div>
+
 <?php
-unset($newsResult[0]);
-$newsResult = array_values($newsResult);
-foreach ($newsResult as $key => $news):?>
-<?php if(!($key % 4)) {?>
-<div class="py-2">
-    <div class="container">
+$first = $newsResult[0];
+$aryTop = array_slice($newsResult, 1, 4);
+$newsResult = array_slice($newsResult, 5);
+?>
+<div class="container">
+    <div class="first-post">
         <div class="row">
-<?php }?>
-            <div class="col-md-3">
-                <div class="card">
-                    <?= $this->Html->image($news->image, ["alt" => "", "class" => "card-img-top", 'style' => ""]) ?>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <?= $news->title ?>
-                            <?= $this->Html->tag('span', 'NEW!', ['class' => 'c_notice_new']) ?>
-                        </h5>
-                        <p class="card-text">
-                            <?= mb_substr(strip_tags($news->body), 0, 100) ?>
-                        </p>
-                        <?= $this->Html->link(__('VIEW_MORE'), ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id], ['class' => 'btn btn-danger'] ) ?>
+            <div class="col-md-8 col-md-push-4">
+                <?php if(!empty($first->image )) {?>
+                <?= $this->Html->link(
+                    $this->Html->image($first->image, ["alt" => "", "class" => ""]),
+                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $first->id],
+                    ['escape' => false, 'class' => 'img']
+                ); ?>
+                <?php } ?>
+            </div>
+            <div class="col-md-4 col-md-pull-8">
+                <h2 class="title">
+                    <?= $this->Html->link(@$first->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$first->id], ['class' => 'smooth'] ) ?>
+                </h2>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i> <?= $first->created->i18nFormat(__('TIMES_MINUTES')); ?>&nbsp;&nbsp;
+                    <i class="fa fa-comments"></i> 20
+                </div>
+                <!--<div class="des">
+                    Description
+                </div>-->
+                <?= mb_substr(strip_tags(@$first->body), 0, 100) ?>
+            </div>
+        </div>
+    </div>
+    <div class="row row-ibl xs-pad-5">
+        <?php foreach ($aryTop as $key => $news) { ?>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="sm-post v2">
+                <?php if(!empty($news->image )) {?>
+                <?= $this->Html->link(
+                    $this->Html->image($news->image, ["alt" => "", "class" => ""]),
+                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                    ['escape' => false, 'class' => 'c-img smooth']
+                ); ?>
+                <?php } ?>
+                <h3 class="title"><?= $this->Html->link(@$news->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$news->id], ['class' => 'smooth'] ) ?></h3>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i> <?= $news->created->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
+                    <i class="fa fa-comments"></i> 20
+                </div>
+            </div>
+        </div>
+        <?php }?>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="">
+                <?php foreach ($newsResult as $key => $news) { ?>
+                <div class="post clearfix">
+                    <?php if(!empty($news->image )) {?>
+                    <?= $this->Html->link(
+                        $this->Html->image($news->image, ["alt" => "", "class" => ""]),
+                        ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                        ['escape' => false, 'class' => 'img']
+                    ); ?>
+                    <?php } ?>
+                    <div class="ct">
+                        <h2 class="title"><?= $this->Html->link(@$news->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$news->id], ['class' => 'smooth'] ) ?></h2>
+                        <div class="post-info">
+                            <i class="fa fa-calendar"></i><?= @$news->created->i18nFormat(__('TIMES_MINUTES')); ?>&nbsp;&nbsp;
+                            <i class="fa fa-comments"></i> 20
+                        </div>
+                        <div class="des">
+                            <!--<?= $this->Html->link(
+                                $news->category_title . ':',
+                                ['controller' => 'News', 'action' => 'index', '_method' => 'GET', $news->id],
+                                ['class' => 'cate']
+                            ) ?>-->
+                            <?= mb_substr(strip_tags(@$news->body), 0, 100) ?>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="cate-sb">
+                <h3 class="h-title"><span>Tin đọc nhiều</span></h3>
+                <div class="post-box2 v2">
+                    <div class="f2-post">
+                        <a class="c-img" href="#" title="">
+                            <img class="smooth" src="theme/frontend/images/img6.jpg" alt="" title=""/>
+                            <div class="ct smooth">
+                                <h3 class="title">Eunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+                                <div class="post-info">
+                                    <i class="fa fa-calendar"></i> 16/06/2017 &nbsp;&nbsp;
+                                    <i class="fa fa-user"></i> Lê Minh &nbsp;&nbsp;
+                                    <i class="fa fa-comments"></i> 20
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list">
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="h-title"><span>Tin đọc nhiều</span></h3>
+                <div class="post-box2 v2">
+                    <div class="f2-post">
+                        <a class="c-img" href="#" title="">
+                            <img class="smooth" src="theme/frontend/images/img6.jpg" alt="" title=""/>
+                            <div class="ct smooth">
+                                <h3 class="title">Eunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+                                <div class="post-info">
+                                    <i class="fa fa-calendar"></i> 16/06/2017 &nbsp;&nbsp;
+                                    <i class="fa fa-user"></i> Lê Minh &nbsp;&nbsp;
+                                    <i class="fa fa-comments"></i> 20
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list">
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
+                        <div class="item">
+                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
+                        </div>
                     </div>
                 </div>
             </div>
-<?php if(($key && !($key % 3)) || (1 + $key) == count($newsResult)) { ?>
         </div>
     </div>
 </div>
-<?php } ?>
-<?php endforeach; ?>
+
+
 <!-- ============================== side Area ============================== -->
 <!--
 <div id="contents" class="cf">

@@ -26,98 +26,148 @@
 
 <!-- ============================== contents Area ============================== -->
 
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1><?= $newsInfo['title']; ?>
-                    <br>
-                </h1>
+<div class="container">
+    <div class="row col-mar-10">
+        <div class="col-md-9">
+            <div class="single">
+                <img class="avatar img-responsive" src="theme/frontend/images/img15.jpg" alt="">
+                <h1 class="title"><?= $newsInfo['title']; ?></h1>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i> <?= $newsInfo['created']->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
+                    <i class="fa fa-comments"></i> 20
+                </div>
+                <!--<div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                </div>--><!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
+                <script src="https://apis.google.com/js/platform.js" async defer>
+                    {lang: 'vi'}
+                </script>
+                <div class="s-content"><?= $newsInfo['body']; ?></div>
+                <!--<div class="s-author text-right"><i class="fa fa-pencil"></i> Author </div>-->
+            </div>
+
+            <?php if(!empty($aryKeyword)) { ?>
+            <div class="s-tag">
+                <?php foreach ($aryKeyword as $key => $keyword) { ?>
+                <a class="smooth" href="#" title="<?= $keyword ?>"><?= $keyword ?></a>
+                <?php } ?>
+            </div>
+            <?php } ?>
+            <div class="s-social">
+                <!--<a class="butn like smooth" href="#" title=""><i class="fa fa-heart"></i>Quan tâm <span>14</span></a>-->
+                <a class="butn facebook smooth" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $newsInfo['id']], true); ?>" title=""
+                   onclick="popUp=window.open(
+				            'http://www.facebook.com/sharer.php?u='+ this.href,
+				            'popupwindow',
+				            'scrollbars=yes,width=400,height=500');
+				            popUp.focus();
+				            return false">
+                    <i class="fa fa-facebook"></i>Chia sẻ Facebook
+                </a>
+                <a class="butn google smooth" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $newsInfo['id']], true); ?>" title=""  onclick="popUp=window.open(
+			                'https://plus.google.com/share?url='+ this.href,
+			                'popupwindow',
+			                'scrollbars=yes,width=500,height=400');
+			                popUp.focus();
+			                return false" >
+                    <i class="fa fa-google-plus"></i>Chia sẻ Google
+                </a>
+
+                <!--<div class="fb-like" data-href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $newsInfo['id']]); ?>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>-->
+                <!-- Đặt thẻ này vào nơi bạn muốn nút chia sẻ kết xuất. -->
+                <!--<div class="g-plus" data-action="share"></div>-->
+                &nbsp;&nbsp;&nbsp;
+                <a class="smooth" href="mailto:<?= __('COMPANY_EMAIL')?>" title=""><i class="fa fa-envelope"></i></a>&nbsp;&nbsp;&nbsp;
+                <a class="smooth" href="javascript:window.print();" title=""><i class="fa fa-print"></i></a>
+            </div>
+            <div class="s-comment">
+                <div class="fb-comments" data-href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $newsInfo['id']], true); ?>" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="sidebar">
+                <h3 class="h-title"><span>Bài viết mới</span></h3>
+                <div class="sb-ct">
+                    <div class="sd-post clearfix">
+                        <a class="img" href="#" title="">
+                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
+                        </a>
+                        <div class="ct">
+                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
+                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
+                        </div>
+                    </div>
+                    <div class="sd-post clearfix">
+                        <a class="img" href="#" title="">
+                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
+                        </a>
+                        <div class="ct">
+                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
+                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <h3 class="h-title"><span>Bài viết mới</span></h3>
+                <div class="sb-ct">
+                    <div class="sd-post clearfix">
+                        <a class="img" href="#" title="">
+                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
+                        </a>
+                        <div class="ct">
+                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
+                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
+                        </div>
+                    </div>
+                    <div class="sd-post clearfix">
+                        <a class="img" href="#" title="">
+                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
+                        </a>
+                        <div class="ct">
+                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
+                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar sb-banner hidden-xs hidden-sm">
+                <a href="#" title="">
+                    <img src="theme/frontend/images/banner.jpg" alt="" title=""/>
+                </a>
             </div>
         </div>
     </div>
-</div>
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img class="img-fluid d-block" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg">
-            </div>
-            <div class="col-md-9">
-                <p class="text-justify"><?= $newsInfo['body']; ?></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="lead"><?= __('NEWS_RELATED') ?></p>
+<!--
+    <h2 class="h-title"><span>Bạn nên đọc</span></h2>
+    <br>
+    <div class="row row-ibl">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="sm-post v3">
+                <a class="c-img smooth" href="#" title="">
+                    <img src="theme/frontend/images/img4.jpg" alt="" title=""/>
+                </a>
+                <h3 class="title"><a class="smooth" href="#" title="">Đừng nói về cuộc chiến hãy nói về con người trên đây</a></h3>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i> 16/06/2017 &nbsp;&nbsp;
+                    <i class="fa fa-comments"></i> 20
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="box-newslist box-news-related">
-                    <li class="e_news_relate_list_templatte items_hiden">
-                        <a class="title" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', '_xxxx_xx_xxxx_']); ?>"></a>
-                    </li>
-                </ul>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="sm-post v3">
+                <a class="c-img smooth" href="#" title="">
+                    <img src="theme/frontend/images/img5.jpg" alt="" title=""/>
+                </a>
+                <h3 class="title"><a class="smooth" href="#" title="">Đừng nói về cuộc chiến hãy nói về con người trên đây</a></h3>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i> 16/06/2017 &nbsp;&nbsp;
+                    <i class="fa fa-comments"></i> 20
+                </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
-
-<div id="contents" class="cf">
-	<div id="main">
-		<section class="c_section_contents">
-			<div class="cf  title">
-				<p
-					style="font-size: 0.85em; color: #47885e; margin: -20px 0 10px 10px;">
-					<?= $newsInfo['created']->i18nFormat(__('TIMES_MINUTES')); ?>
-				</p>
-			</div>
-			<div class="box-news_contents cf">
-				<div>
-					<div style="float: left; margin-top: -4px;">
-					<div class="fb-like" data-href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $newsInfo['id']]); ?>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-					</div>
-					<div style="float: left; margin-left: 10px;"></div>
-					<div style="clear: both;"></div>
-				</div>
-
-				<p class="mt10">
-					<?= __('KEY_WORD') ?>
-					： <a class="" href="">イベント・リリース</a>
-				</p>
-			</div>
-			<!-- /.box-news_contents -->
-		</section>
-
-		<?= $this->element('News/_comment'); ?>
-		<!-- /section.c_section_contents -->
-
-		<div style="clear: both;"></div>
-		<section class="box-newslist box-news-ranking">
-			<h1>
-				<?= __('NEWS_TOP') ?>
-				<span>
-					<?= __('NEWS_ANNOTATIONS_FOR_TOP') ?>
-				</span>
-			</h1>
-			<ol class="c_list_article">
-				<li class="top_news_list_templatte items_hiden cf">
-					<span class="sub_ranking_icon"> </span>
-					<div class="c_list_inner">
-						<h2>
-							<a class="" href="<?= $this->Url->build(['controller' => 'News', 'action' => 'detail', '_method' => 'GET', '_xxxx_xx_xxxx_']); ?>"></a>
-						</h2>
-					</div></li>
-			</ol>
-		</section>
-		<div class="cb"></div>
-	</div>
-	<!-- /div#main -->
-
-</div>
-<!-- /contents -->

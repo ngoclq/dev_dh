@@ -32,6 +32,11 @@ class NewsController extends AppController
         }
         $tblRegistry = TableRegistry::get('News');
         $newsResult = $tblRegistry->getNewsCommon($options);
+        foreach ($newsResult as $key => $news) {
+            $aryTmp = $this->parserImg($news['body']);
+            $newsResult[$key]['body'] = $aryTmp['str_contents'];
+            $newsResult[$key]['image'] = isset($aryTmp['images'][0]) ? $aryTmp['images'][0]['src'] : NEWS_DEFAULT_IMG;
+        }
         $this->set('newsResult', $newsResult);
         if (isset($newsResult[0])) {
             $menuInfo = [
@@ -68,6 +73,23 @@ class NewsController extends AppController
         $historyInfo['query'] = '';
         $this->commonSave('NewsHistories', null, $historyInfo, FLAG_TRUE);
         // End Save to news_history
+        if (isset($newsInfo['id'])) {
+            $menuInfo = [
+                [
+                    'id' => $newsInfo['news_category_id'],
+                    'title' => $newsInfo['category_title']
+                ],
+                [
+                    'id' => $newsInfo['id'],
+                    'title' => $newsInfo['title']
+                ]
+            ];
+            $this->setMenubar($menuInfo);
+
+            if (isset($newsInfo['keyword']) && mb_strlen($newsInfo['keyword'])) {
+                $this->set('aryKeyword', explode(',', $newsInfo['keyword']));
+            }
+        }
     }
 
 

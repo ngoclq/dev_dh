@@ -63,7 +63,8 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->viewBuilder()->setLayout('default_ping');
+        $this->viewBuilder()->setLayout('default_blog');
+        //$this->viewBuilder()->setLayout('default_ping');
 
         $this->getMenuCategory();
 
@@ -614,9 +615,9 @@ class AppController extends Controller
                 $image = array_fill_keys($images[1], $images[2][0]);
                 $aryImage[] = $image;
             }
-
-            $contents = preg_replace("/<img[^>]+\>/i", '', $str);
         }
+
+        $contents = preg_replace("/<img[^>]+\>/i", '', $str);
         return ['str_contents' => $contents, 'images' => $aryImage];
     }
 

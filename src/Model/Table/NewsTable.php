@@ -214,6 +214,7 @@ class NewsTable extends TableCommon
                     'category_description' => "NewsCategories.description_{$this->language}",
                     'category_path' => 'NewsCategories.path',
                     'category_description' => "NewsCategories.description_{$this->language}",
+                    'News.created',
                 ]
             ];
         } else {
