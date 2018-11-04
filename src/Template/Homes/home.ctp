@@ -143,22 +143,22 @@ if ($index <= 3) {
     <div class="container">
         <div class="row">
     <?php } ?>
-            <?= $this->element('homes/area_list_1', ['aryCate' => $aryCate]); ?>
+            <?= $this->element('Homes/area_list_1', ['aryCate' => $aryCate]); ?>
     <?php if ($index === 3) { ?>
         </div>
     </div>
     <?php } ?>
 <?php } elseif ($index == 4) { ?>
-    <?= $this->element('homes/area_about_1', ['aryCate' => $aryCate]); ?>
+    <?= $this->element('Homes/area_about_1', ['aryCate' => $aryCate]); ?>
 <?php } elseif ($index === 5) { ?>
     <div class="container">
         <div class="row">
-            <?= $this->element('homes/area_list_2', ['aryCate' => $aryCate]); ?>
+            <?= $this->element('Homes/area_list_2', ['aryCate' => $aryCate]); ?>
 <?php
     } elseif ($index === 6) {
         $index = 0;
 ?>
-            <?= $this->element('homes/area_list_1', ['aryCate' => $aryCate]); ?>
+            <?= $this->element('Homes/area_list_1', ['aryCate' => $aryCate]); ?>
         </div>
     </div>
 
