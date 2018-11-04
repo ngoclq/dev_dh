@@ -14,6 +14,7 @@
 <!-- ============================== contents Area ============================== -->
 
 <?php
+if (isset($newsResult[0])) {
 $first = $newsResult[0];
 $aryTop = array_slice($newsResult, 1, 4);
 $newsResult = array_slice($newsResult, 5);
@@ -138,8 +139,17 @@ $newsResult = array_slice($newsResult, 5);
         </div>
     </div>
 </div>
-
-
+<?php } else { ?>
+<div class="container">
+    <div class="first-post">
+        <div class="row">
+            <div class="col-md-12 col-md-push-4">
+                Không có tin tức
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
 <!-- ============================== side Area ============================== -->
 <!--
 <div id="contents" class="cf">
