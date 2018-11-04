@@ -1,97 +1,166 @@
-<?php if(isset($newsTop) && is_array($newsTop) && count($newsTop)) {?>
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>
-                    <?= __('LABEL_NEWS_TOP') ?>
-                    <br>
-                </h1>
+<br/>
+<div class="container">
+    <div class="row col-mar-10">
+        <?php if(isset($newsLasted) && is_array($newsLasted) && count($newsLasted)) {?>
+        <div class="col-md-f60">
+            <div class="big-cas">
+                <?php
+                    $newsLasted_1 = array_slice($newsLasted, 0, 5);
+                    $newsLasted_2 = array_slice($newsLasted, 5, 4);
+                    $newsLasted_3 = array_slice($newsLasted, 9, 2);
+                    foreach($newsLasted as $key => $news):
+                ?>
+                <div class="item">
+                    <div class="big-post">
+                        <?php if(!empty($news->image )) {?>
+                        <?= $this->Html->link(
+                            $this->Html->image($news->image, ['alt' => '']),
+                            ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                            ['escape' => false, 'class' => 'c-img smooth']
+                        ); ?>
+                        <?php } ?>
+                        <div class="ct">
+                            <h3 class="title">
+                                <?= $this->Html->link(
+                                    $news->title,
+                                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                                    ['class' => 'smooth']
+                                ); ?>
+                            </h3>
+                            <p><?= mb_substr(strip_tags($news->body), 0, 100) ?></p>
+                            <div class="post-info">
+                                <i class="fa fa-calendar"></i><?= @$news->created->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
+                                <!--<i class="fa fa-comments"></i> 20-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+        <div class="col-md-f40">
+            <div class="row col-mar-10">
+                <div class="col-md-6">
+                    <div class="bn-posts">
+                        <?php
+                            $i = 0;
+                            foreach($newsLasted_2 as $key => $news):
+                        ?>
+                        <div class="b-post <?php if(!$i && !empty($news->image )) { ?> img <?php }?>">
+                            <?php if(!$i && !empty($news->image )) { ?>
+                            <?= $this->Html->link(
+                                $this->Html->image($news->image, ['alt' => '']),
+                                ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                                ['escape' => false, 'class' => 'c-img']
+                            ); ?>
+                            <?php
+                                }
+                                $i++;
+                            ?>
+                            <div class="ct smooth">
+                                <h3 class="title">
+                                    <?= $this->Html->link(
+                                        $news->title,
+                                        ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                                        ['class' => 'smooth']
+                                    ); ?>
+                                </h3>
+                                <div class="post-info">
+                                    <i class="fa fa-calendar"></i><?= @$news->created->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
+                                    <!--<i class="fa fa-comments"></i> 20-->
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <?php foreach($newsLasted_3 as $key => $news): ?>
+                        <div class="col-md-12 col-sm-6 col-xs-12">
+                            <div class="s-post">
+                                <?php if(!empty($news->image )) { ?>
+                                    <?= $this->Html->link(
+                                        $this->Html->image($news->image, ['alt' => '']),
+                                        ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                                        ['escape' => false, 'class' => 'c-img smooth']
+                                    ); ?>
+                                <?php } ?>
+                                <h3 class="title">
+                                <?= $this->Html->link(
+                                    $news->title,
+                                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                                    ['class' => 'smooth']
+                                ); ?>
+                                </h3>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
     </div>
-</div>
 
-<?php foreach($newsTop as $key => $news):?>
-<?php if(!($key % 4)) {?>
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <?php }?>
-            <div class="col-md-3">
-                <div class="card">
-                    <?php if(!empty($news->image )) {?>
+    <?php if(isset($newsTop) && is_array($newsTop) && count($newsTop)) {?>
+    <div class="row row-ibl xs-pad-5">
+        <?php foreach($newsTop as $key => $news):?>
+        <div class="col-md-f20 col-sm-4 col-xs-6">
+            <div class="sm-post">
+                <?php if(!empty($news->image )) {?>
+                <?= $this->Html->link(
+                    $this->Html->image($news->image, ['alt' => '']),
+                    ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
+                    ['escape' => false, 'class' => 'c-img smooth']
+                ); ?>
+                <?php } ?>
+                <h3 class="title">
                     <?= $this->Html->link(
-                        $this->Html->image($news->image, ["alt" => "", "class" => "", 'style' => "width:100%;"]),
+                        $news->title,
                         ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', $news->id],
-                        ['escape' => false]
+                        ['class' => 'smooth']
                     ); ?>
-                    <?php } ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $news->title ?></h5>
-                        <p class="card-text">
-                            <?= mb_substr(strip_tags($news->body), 0, 100) ?>
-                        </p>
-                        <?= $this->Html->link(__('VIEW_MORE'), ['controller' => 'News', 'action' => 'detail', '_method'
-                        => 'GET', $news->id], ['class' => 'btn btn-danger']) ?>
-                    </div>
+                </h3>
+                <div class="post-info">
+                    <i class="fa fa-calendar"></i><?= @$news->created->i18nFormat(__('TIMES_MINUTES')); ?>&nbsp;&nbsp;
+                    <!--<i class="fa fa-comments"></i> 20-->
                 </div>
             </div>
-            <?php if(($key && !($key % 3)) || (1 + $key) == count($newsTop)) { ?>
         </div>
+        <?php endforeach; ?>
     </div>
-</div>
-<?php } ?>
-<?php endforeach; ?>
-<?php } ?>
-
-<?php foreach($aryNews as $keyCate => $aryCate):?>
-<div class="py-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>
-                    <?= $this->Html->link($aryCate['title'], [ 'controller' => 'News', 'action' => 'index', '_method' =>
-                    'GET', $aryCate['id']]) ?>
-                    <br>
-                </h1>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="py-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class=""><?= $aryCate['description']?></p>
-            </div>
-        </div>
-    </div>
+    <?php } ?>
 </div>
 
-<?php foreach($aryCate['list'] as $key => $aryNews):?>
-<?php if(!($key % 4)) {?>
-<div class="py-2">
+<?php
+$index = 0;
+foreach($aryNews as $keyCate => $aryCate) {
+$index++;
+if ($index <= 3) {
+?>
+    <?php if ($index === 1) { ?>
     <div class="container">
         <div class="row">
-            <?php }?>
-            <div class="col-md-3">
-                <div class="card">
-                    <?= $this->Html->image($aryNews->image, ["alt" => "", "class" => "card-img-top", 'style' => ""]) ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $aryNews->title ?></h5>
-                        <p class="card-text">
-                            <?= mb_substr(strip_tags($aryNews->body), 0, 100) ?>
-                        </p>
-                        <?= $this->Html->link(__('VIEW_MORE'), ['controller' => 'News', 'action' => 'detail', '_method'
-                        => 'GET', $aryNews->id], ['class' => 'btn btn-danger']) ?>
-                    </div>
-                </div>
-            </div>
-            <?php if(($key && !($key % 3)) || (1 + $key) == count($aryCate['list'])) { ?>
+    <?php } ?>
+            <?= $this->element('homes/area_list_1', ['aryCate' => $aryCate]); ?>
+    <?php if ($index === 3) { ?>
         </div>
     </div>
-</div>
+    <?php } ?>
+<?php } elseif ($index == 4) { ?>
+    <?= $this->element('homes/area_about_1', ['aryCate' => $aryCate]); ?>
+<?php } elseif ($index === 5) { ?>
+    <div class="container">
+        <div class="row">
+            <?= $this->element('homes/area_list_2', ['aryCate' => $aryCate]); ?>
+<?php
+    } elseif ($index === 6) {
+        $index = 0;
+?>
+            <?= $this->element('homes/area_list_1', ['aryCate' => $aryCate]); ?>
+        </div>
+    </div>
+
 <?php } ?>
-<?php endforeach; ?>
-<?php endforeach; ?>
+<?php } // End foreach ?>

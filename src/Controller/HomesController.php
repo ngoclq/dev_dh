@@ -15,6 +15,7 @@ class HomesController extends AppController
             'News.news_category_id',
             'title' => "News.title_{$this->language}",
             'body' => "News.body_{$this->language}",
+            'News.created'
         ];
         $options = [
             'conditions' => ['top_flag' => FLAG_TRUE],
@@ -34,6 +35,32 @@ class HomesController extends AppController
 
         $this->set('newsTop', $newsTop);
 
+        /* Get Top */
+        $aryField = [
+            'News.id',
+            'News.news_category_id',
+            'title' => "News.title_{$this->language}",
+            'body' => "News.body_{$this->language}",
+            'News.created'
+        ];
+        $options = [
+            'conditions' => ['top_flag' => FLAG_FALSE],
+            'category_id' => [],
+            'not_in_id' => FLAG_FALSE,
+            'fields' => $aryField,
+            'order' => 'News.id DESC',
+            'limit' => '11'
+        ];
+        $tblRegistry = TableRegistry::get('News');
+        $newsLasted = $tblRegistry->getNewsCommon($options);
+        foreach ($newsLasted as $key => $news) {
+            $aryTmp = $this->parserImg($news['body']);
+            $newsLasted[$key]['body'] = $aryTmp['str_contents'];
+            $newsLasted[$key]['image'] = isset($aryTmp['images'][0]) ? $aryTmp['images'][0]['src'] : NEWS_DEFAULT_IMG;
+        }
+
+        $this->set('newsLasted', $newsLasted);
+
 
         $aryNews = [];
         $tblNewsCateRegistry = TableRegistry::get('NewsCategories');
@@ -46,6 +73,7 @@ class HomesController extends AppController
                     'News.news_category_id',
                     'title' => "News.title_{$this->language}",
                     'body' => "News.body_{$this->language}",
+                    'News.created'
                 ];
                 $options = [
                     //'conditions' => ['top_flag' => FLAG_TRUE],
