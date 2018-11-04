@@ -34,13 +34,10 @@
                 <h1 class="title"><?= $newsInfo['title']; ?></h1>
                 <div class="post-info">
                     <i class="fa fa-calendar"></i> <?= $newsInfo['created']->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
-                    <i class="fa fa-comments"></i> 20
+                    <!--<i class="fa fa-comments"></i> 20-->
                 </div>
-                <!--<div class="des">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                </div>--><!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
+                <div class="des"> <?= mb_substr(strip_tags($newsInfo['body']), 0, 200) ?>... </div>
+                <!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
                 <script src="https://apis.google.com/js/platform.js" async defer>
                     {lang: 'vi'}
                 </script>
@@ -87,7 +84,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="sidebar">
+            <!--<div class="sidebar">
                 <h3 class="h-title"><span>Bài viết mới</span></h3>
                 <div class="sb-ct">
                     <div class="sd-post clearfix">
@@ -109,36 +106,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="sidebar">
-                <h3 class="h-title"><span>Bài viết mới</span></h3>
-                <div class="sb-ct">
-                    <div class="sd-post clearfix">
-                        <a class="img" href="#" title="">
-                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
-                        </a>
-                        <div class="ct">
-                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
-                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
-                        </div>
-                    </div>
-                    <div class="sd-post clearfix">
-                        <a class="img" href="#" title="">
-                            <img src="theme/frontend/images/img16.jpg" alt="" title=""/>
-                        </a>
-                        <div class="ct">
-                            <a class="cate smooth" href="#" title="">Hạnh phúc</a>
-                            <p class="title"><a class="smooth" href="#" title="">Giáo sư Ngô Bảo Châu: “ Đừng băn khoăn về vật chất khi chọn nghề giáo"</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>-->
 
-            <div class="sidebar sb-banner hidden-xs hidden-sm">
-                <a href="#" title="">
-                    <img src="theme/frontend/images/banner.jpg" alt="" title=""/>
-                </a>
-            </div>
         </div>
     </div>
 <!--

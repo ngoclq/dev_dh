@@ -36,7 +36,7 @@ $newsResult = array_slice($newsResult, 5);
                 </h2>
                 <div class="post-info">
                     <i class="fa fa-calendar"></i> <?= $first->created->i18nFormat(__('TIMES_MINUTES')); ?>&nbsp;&nbsp;
-                    <i class="fa fa-comments"></i> 20
+                    <!--<i class="fa fa-comments"></i> 20-->
                 </div>
                 <!--<div class="des">
                     Description
@@ -59,7 +59,7 @@ $newsResult = array_slice($newsResult, 5);
                 <h3 class="title"><?= $this->Html->link(@$news->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$news->id], ['class' => 'smooth'] ) ?></h3>
                 <div class="post-info">
                     <i class="fa fa-calendar"></i> <?= $news->created->i18nFormat(__('TIMES_MINUTES')); ?> &nbsp;&nbsp;
-                    <i class="fa fa-comments"></i> 20
+                    <!--<i class="fa fa-comments"></i> 20-->
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@ $newsResult = array_slice($newsResult, 5);
                         <h2 class="title"><?= $this->Html->link(@$news->title, ['controller' => 'News', 'action' => 'detail', '_method' => 'GET', @$news->id], ['class' => 'smooth'] ) ?></h2>
                         <div class="post-info">
                             <i class="fa fa-calendar"></i><?= @$news->created->i18nFormat(__('TIMES_MINUTES')); ?>&nbsp;&nbsp;
-                            <i class="fa fa-comments"></i> 20
+                            <!--<i class="fa fa-comments"></i> 20-->
                         </div>
                         <div class="des">
                             <!--<?= $this->Html->link(
@@ -103,7 +103,7 @@ $newsResult = array_slice($newsResult, 5);
 
         <div class="col-md-3">
             <div class="cate-sb">
-                <h3 class="h-title"><span>Tin đọc nhiều</span></h3>
+                <!--<h3 class="h-title"><span>Tin đọc nhiều</span></h3>
                 <div class="post-box2 v2">
                     <div class="f2-post">
                         <a class="c-img" href="#" title="">
@@ -132,38 +132,8 @@ $newsResult = array_slice($newsResult, 5);
                             <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
-                <h3 class="h-title"><span>Tin đọc nhiều</span></h3>
-                <div class="post-box2 v2">
-                    <div class="f2-post">
-                        <a class="c-img" href="#" title="">
-                            <img class="smooth" src="theme/frontend/images/img6.jpg" alt="" title=""/>
-                            <div class="ct smooth">
-                                <h3 class="title">Eunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
-                                <div class="post-info">
-                                    <i class="fa fa-calendar"></i> 16/06/2017 &nbsp;&nbsp;
-                                    <i class="fa fa-user"></i> Lê Minh &nbsp;&nbsp;
-                                    <i class="fa fa-comments"></i> 20
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="list">
-                        <div class="item">
-                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
-                        </div>
-                        <div class="item">
-                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
-                        </div>
-                        <div class="item">
-                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
-                        </div>
-                        <div class="item">
-                            <h3 class="title"><a class="smooth cate" href="#" title="">Chuyện đời sống:</a><a class="smooth" href="#" title="">TTO - Thượng tá Lê Đức Đoàn - nguyên chiến sĩ đội CSGT số 1 (Công an Hà Nội)</a></h3>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
