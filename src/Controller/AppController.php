@@ -503,6 +503,7 @@ class AppController extends Controller
                     'created'
                 ],
                 'order' => [
+                    'parent_id' => 'ASC',
                     'order_number' => 'ASC'
                 ]
             ];
