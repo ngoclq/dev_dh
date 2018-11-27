@@ -486,7 +486,7 @@ class AppController extends Controller
         return $aryResult;
     }
 
-    public function getListCategory($displayFlag = '', $menuTopFlag = false)
+    public function getListCategory($displayFlag = '', $getParent = false)
     {
         try {
             $data = [];
@@ -511,6 +511,10 @@ class AppController extends Controller
                 $conditions['conditions']['display_flag'] = $displayFlag;
             }
 
+            if ($getParent) {
+                $conditions['conditions']['parent_id'] = 0;
+            }
+
             $newsCategory = TableRegistry::get('NewsCategories');
             $data = $newsCategory->find('all', $conditions);
         } catch (\ErrorException $ex) {
@@ -522,10 +526,10 @@ class AppController extends Controller
 
     public function getMenuCategory()
     {
-        if ($this->Session->check('categories')) {
+        /*if ($this->Session->check('categories')) {
             $this->set('categories', $this->Session->read('categories'));
             return;
-        }
+        }*/
 
         $categories = $this->getListCategory(1);
         $aryCategory = [];

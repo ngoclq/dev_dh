@@ -21,7 +21,7 @@ class NewsCategoryController extends AdminController
         $data = $this->NewsCategories->find('all');
         $this->set('news', $data);
     } */
-    
+
     public function index()
     {
         $listCategory = $this->getListCategory()->toArray(); // Get all category in system
@@ -29,7 +29,7 @@ class NewsCategoryController extends AdminController
             $newsTbl = TableRegistry::get('News');
             $aryNewsArticle = $newsTbl->getTotalArticleByCategory(); // Get total article with each category
             $aryNewsHistory = $newsTbl->getTotalViewByCategory(); // Get total view article with each category
-            
+
             foreach($listCategory as $index => $info) {
                 if(isset($aryNewsArticle [$info->id])) {
                     $info->set('article_number', $aryNewsArticle [$info->id]);
@@ -39,7 +39,7 @@ class NewsCategoryController extends AdminController
                         '1' => '0'
                     ]);
                 }
-                
+
                 if(isset($aryNewsHistory [$info->id])) {
                     $info->set('view_number', $aryNewsHistory [$info->id]);
                 } else {
@@ -50,11 +50,11 @@ class NewsCategoryController extends AdminController
                 }
                 $listCategory [$index] = $info;
             }
-            
+
             if(isset($aryNewsArticle ['summary'])) {
                 $listCategory ['article_total'] = $aryNewsArticle ['summary'];
             }
-            
+
             if(isset($aryNewsHistory ['summary'])) {
                 $listCategory ['view_total'] = $aryNewsHistory ['summary'];
             }
@@ -64,6 +64,9 @@ class NewsCategoryController extends AdminController
 
     public function form($id = null)
     {
+        $news_category_id = $this->_getListCategoryFillComboxBox(1);
+        $this->set(compact('news_category_id'));
+
         $result = $this->commonSave('NewsCategories', $id, $this->request->getData());
         if(isset($result['msg']) && $result['msg']) {
             $this->Flash->success($result['msg']);
@@ -71,7 +74,7 @@ class NewsCategoryController extends AdminController
         if(isset($result['full_info']) && $result['full_info']) {
             $this->set('newsCategory', $result['full_info']);
         }
-        
+
         if ($result['result_flag'] || !isset($result['full_info']) || empty($result['full_info'])) {
             return $this->redirect([
                 'controller' => 'NewsCategory',
@@ -84,11 +87,11 @@ class NewsCategoryController extends AdminController
 
     public function actionAjax()
     {
-        
+
         if ($this->request->is(['ajax']) && $this->request->isPost()) {
             $this->autoRender = false;
             $this->viewBuilder()->setLayout(false);
-            
+
             $id = $this->request->getData('id');
             $handle = $this->request->getData('handle');
 
@@ -119,6 +122,20 @@ class NewsCategoryController extends AdminController
 
             return $this->response->withDisabledCache()->withType('application/json')->withStringBody($resultJ);
         }
+    }
+
+    private function _getListCategoryFillComboxBox($displayFlag = '')
+    {
+        $data = [];
+        $listCategory = $this->getListCategory($displayFlag, true);
+        if(empty($listCategory)) {
+            return $data;
+        }
+        foreach($listCategory as $key => $info) {
+            $data [$info->id] = $info->title_vi;
+        }
+
+        return $data;
     }
 
 

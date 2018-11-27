@@ -10,10 +10,21 @@
 						<fieldset>
 							<div class="form-group">
 								<div class="col-sm-3">
+									<label for=""> <?= __('CATEGORY') ?></label>
+								</div>
+								<div class="col-sm-9">
+									<?=  $this->Form->control('parent_id', ['label' => false, 'class' => "form-control", 'options' => $news_category_id, 'empty' => true,
+									'templates' => [
+									'inputContainer' => '<span class="ui-select">{{content}}</span>'
+									]]) ?>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-3">
 									<label for=""><?= __('NAME') . '(' . __('VIETNAMESE') . ')' ?></label>
 								</div>
 								<div class="col-sm-9">
-									<?=  $this->Form->control('title_vi', ['label' => false, 'class' => "form-control", 'data-ng-model' => "category.title_vi"]) ?>
+									<?=  $this->Form->control('title_vi', ['label' => false, 'class' => "form-control",'ng-init'=>"category.title_vi ='$newsCategory->title_vi'",'data-ng-model' => "category.title_vi"]) ?>
 								</div>
 							</div>
 							<div class="form-group">
@@ -21,7 +32,7 @@
 									<label for=""><?= __('DESCRIPTION') . '(' . __('VIETNAMESE') . ')' ?></label>
 								</div>
 								<div class="col-sm-9">
-									<?=  $this->Form->control('description_vi', ['label' => false, 'class' => "form-control", 'data-ng-model' => "category.description_vi"]) ?>
+									<?=  $this->Form->control('description_vi', ['label' => false, 'class' => "form-control",'ng-init'=>"category.description_vi ='$newsCategory->description_vi'", 'data-ng-model' => "category.description_vi"]) ?>
 								</div>
 							</div>
 							<div class="form-group">
@@ -29,7 +40,7 @@
 									<label for=""><?= __('NAME') . '(' . __('JAPANESE') . ')' ?></label>
 								</div>
 								<div class="col-sm-9">
-									<?=  $this->Form->control('title_jp', ['label' => false, 'class' => "form-control", 'data-ng-model' => "category.title_jp"]) ?>
+									<?=  $this->Form->control('title_jp', ['label' => false, 'class' => "form-control",'ng-init'=>"category.title_jp ='$newsCategory->title_jp'", 'data-ng-model' => "category.title_jp"]) ?>
 								</div>
 							</div>
 							<div class="form-group">
@@ -37,7 +48,7 @@
 									<label for=""><?= __('DESCRIPTION') . '(' . __('JAPANESE') . ')' ?></label>
 								</div>
 								<div class="col-sm-9">
-									<?=  $this->Form->control('description_jp', ['label' => false, 'class' => "form-control", 'data-ng-model' => "category.description_jp"]) ?>
+									<?=  $this->Form->control('description_jp', ['label' => false, 'class' => "form-control",'ng-init'=>"category.description_jp ='$newsCategory->description_jp'", 'data-ng-model' => "category.description_jp"]) ?>
 								</div>
 							</div>
 							<?=  $this->Form->button(__('BTN_SAVE'), ['class'=> "btn btn-success", 'data-ng-disabled' => "!canSubmit()"]) ?>
