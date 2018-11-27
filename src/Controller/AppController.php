@@ -515,6 +515,8 @@ class AppController extends Controller
                 $conditions['conditions']['parent_id'] = 0;
             }
 
+            $conditions['conditions']['delete_flag'] = 0;
+
             $newsCategory = TableRegistry::get('NewsCategories');
             $data = $newsCategory->find('all', $conditions);
         } catch (\ErrorException $ex) {
