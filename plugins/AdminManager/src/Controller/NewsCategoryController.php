@@ -66,8 +66,10 @@ class NewsCategoryController extends AdminController
     {
         $news_category_id = $this->_getListCategoryFillComboxBox(1);
         $this->set(compact('news_category_id'));
+        $data = $this->request->getData();
+        $data['parent_id'] = (empty($data['parent_id'])) ? 0 : $data['parent_id'];
 
-        $result = $this->commonSave('NewsCategories', $id, $this->request->getData());
+        $result = $this->commonSave('NewsCategories', $id, $data);
         if(isset($result['msg']) && $result['msg']) {
             $this->Flash->success($result['msg']);
         }
